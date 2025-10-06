@@ -1,17 +1,17 @@
 import React, { FC } from "react";
 import { ListRenderer } from "components/list-renderer";
 import { useRecoilValue } from "recoil";
-import { notificationsState } from "state";
+import { endowListState } from "state";
 import { Box, Header, Page, Text } from "zmp-ui";
 import { Divider } from "components/divider";
 
-const NotificationList: FC = () => {
-  const notifications = useRecoilValue(notificationsState);
+const EndowList: FC = () => {
+  const endows = useRecoilValue(endowListState);
   return (
     <Box className="bg-background">
       <ListRenderer
         noDivider
-        items={notifications}
+        items={endows}
         renderLeft={(item) => (
           <img className="w-10 h-10 rounded-full" src={item.image} />
         )}
@@ -31,14 +31,14 @@ const NotificationList: FC = () => {
   );
 };
 
-const NotificationPage: FC = () => {
+const EndowPage: FC = () => {
   return (
     <Page>
-      <Header title="Thông báo" showBackIcon={false} />
+      <Header title="Ưu đãi" showBackIcon={false} />
       <Divider />
-      <NotificationList />
+      <EndowList />
     </Page>
   );
 };
 
-export default NotificationPage;
+export default EndowPage;

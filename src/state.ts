@@ -4,7 +4,7 @@ import logo from "static/logo.png";
 import { Category } from "types/category";
 import { Product, Variant } from "types/product";
 import { Cart } from "types/cart";
-import { Notification } from "types/notification";
+import { EndowListAtom } from "types/endow";
 import { calculateDistance } from "utils/location";
 import { Store } from "types/delivery";
 import { calcFinalPrice } from "utils/product";
@@ -33,12 +33,12 @@ export const productsState = selector<Product[]>({
       .default as Variant[];
     return products.map(
       (product) =>
-        ({
-          ...product,
-          variants: variants.filter((variant) =>
-            product.variantId.includes(variant.id)
-          ),
-        } as Product)
+      ({
+        ...product,
+        variants: variants.filter((variant) =>
+          product.variantId.includes(variant.id)
+        ),
+      } as Product)
     );
   },
 });
@@ -60,12 +60,12 @@ export const productsByCategoryState = selectorFamily<Product[], string>({
   key: "productsByCategory",
   get:
     (categoryId) =>
-    ({ get }) => {
-      const allProducts = get(productsState);
-      return allProducts.filter((product) =>
-        product.categoryId.includes(categoryId)
-      );
-    },
+      ({ get }) => {
+        const allProducts = get(productsState);
+        return allProducts.filter((product) =>
+          product.categoryId.includes(categoryId)
+        );
+      },
 });
 
 export const cartState = atom<Cart>({
@@ -93,8 +93,8 @@ export const totalPriceState = selector({
   },
 });
 
-export const notificationsState = atom<Notification[]>({
-  key: "notifications",
+export const endowListState = atom<EndowListAtom[]>({
+  key: "endowList",
   default: [
     {
       id: 1,

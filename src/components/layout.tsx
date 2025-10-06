@@ -5,7 +5,7 @@ import { Navigation } from "./navigation";
 import HomePage from "pages/index";
 import CategoryPage from "pages/category";
 import CartPage from "pages/cart";
-import NotificationPage from "pages/notification";
+import NotificationPage from "pages/endow";
 import ProfilePage from "pages/profile";
 import SearchPage from "pages/search";
 import CheckoutResultPage from "pages/result";

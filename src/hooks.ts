@@ -70,3 +70,34 @@ export function useToBeImplemented() {
       text: "Chức năng dành cho các bên tích hợp phát triển...",
     });
 }
+
+export function useHeaderHiddenOnScroll(selector = ".flex-1.overflow-auto") {
+  const [hidden, setHidden] = useState(true);
+
+  useEffect(() => {
+    const container = document.querySelector(selector) || window;
+    const handleScroll = () => {
+      const scrollTop =
+        container === window
+          ? window.scrollY
+          : (container as HTMLElement).scrollTop;
+      setHidden(scrollTop === 0);
+    };
+    if (container === window) {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    } else {
+      (container as HTMLElement).addEventListener("scroll", handleScroll, {
+        passive: true,
+      });
+    }
+    return () => {
+      if (container === window) {
+        window.removeEventListener("scroll", handleScroll);
+      } else {
+        (container as HTMLElement).removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [selector]);
+
+  return hidden;
+}
