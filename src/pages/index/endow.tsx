@@ -38,11 +38,11 @@ export const Endow: React.FC = () => {
 
     return (
         <Box className="w-full px-1 mt-2.5">
-            <Box className="bg-[#B02020] rounded-full flex items-center p-2.5 mb-2">
-                <Box className="pl-6">
+            <Box className="bg-[#B02020] rounded-full flex items-center p-1 mb-2">
+                <Box className="pl-4">
                     <GiftIcon />
                 </Box>
-                <Box className="flex-1 ml-7 ">
+                <Box className="flex-1 ml-4 ">
                     <Text className="text-white font-semibold text-sm">
                         Bạn đang có {endows.length} ưu đãi
                     </Text>

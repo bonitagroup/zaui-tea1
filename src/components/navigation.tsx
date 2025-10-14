@@ -1,33 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { Icon } from "zmp-ui";
+import { ActionSheet } from "./fullscreen-sheet";
 import { useVirtualKeyboardVisible } from "../hooks";
 import { getConfig } from "../utils/config";
 import { CartIcon } from "./cart-icon";
 
 type Tab = {
-  path: string;
+  path?: string;
   label: string;
   icon: React.ReactNode;
+  action?: () => void;
 };
 
 const TABS: Tab[] = [
   { path: "/", label: "Trang chủ", icon: "zi-home" },
   { path: "/search", label: "Tìm kiếm", icon: "zi-search" },
+  { label: "Thêm", icon: "zi-plus-circle" },
   { path: "/cart", label: "Giỏ hàng", icon: "zi-cart" },
   { path: "/profile", label: "Tài khoản", icon: "zi-user" },
+];
+
+const MORE_ACTIONS = [
+  { text: "Thông báo", path: "/notification" },
+  { text: "Ưu đãi", path: "/endow" },
+  { text: "Hỗ trợ", path: "/support" },
 ];
 
 const Navigation: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const keyboardVisible = useVirtualKeyboardVisible();
+  const [showMore, setShowMore] = useState(false);
 
-  const primaryColor =
-    (getConfig((c) => c.template?.primaryColor) as string) || "#006af5";
-
-  const go = (path: string) => {
-    if (location.pathname !== path) navigate(path);
+  const go = (path?: string) => {
+    if (path && location.pathname !== path) navigate(path);
   };
 
   const safeBottom = "env(safe-area-inset-bottom, 0px)";
@@ -35,202 +42,229 @@ const Navigation: React.FC = () => {
   if (keyboardVisible) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        left: 0,
-        right: 0,
-        bottom: 0,
-        paddingBottom: `calc(${safeBottom})`,
-        zIndex: 60,
-        display: "flex",
-        justifyContent: "center",
-        pointerEvents: "auto",
-      }}
-      aria-hidden={false}
-    >
+    <>
       <div
         style={{
-          width: "100%",
-          maxWidth: 900,
-          margin: "0 auto",
-          padding: "0 2px",
-          boxSizing: "border-box",
+          position: "fixed",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          paddingBottom: `calc(${safeBottom})`,
+          zIndex: 60,
+          display: "flex",
+          justifyContent: "center",
+          pointerEvents: "auto",
         }}
+        aria-hidden={false}
       >
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: 6,
+            width: "100%",
+            maxWidth: 900,
+            margin: "0 auto",
+            padding: "0 0px",
+            boxSizing: "border-box",
           }}
         >
           <div
             style={{
-              width: 80,
-              height: 6,
-              background: "rgba(255,255,255,0.12)",
-              borderRadius: 9999,
-              transform: "translateY(2px)",
-            }}
-          />
-        </div>
-
-        <div
-          style={{
-            background: "#055140",
-            borderTopLeftRadius: 55,
-            borderTopRightRadius: 55,
-            boxShadow: "0 -6px 20px rgba(0,0,0,0.12)",
-            position: "relative",
-            display: "flex",
-            alignItems: "center",
-            height: 78,
-            padding: "0 10px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 24, flex: 1 }}>
-            {TABS.slice(0, 2).map((t) => {
-              const active = location.pathname === t.path;
-              return (
-                <button
-                  key={t.path}
-                  onClick={() => go(t.path)}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    border: "none",
-                    background: "transparent",
-                    color: active ? "#FBB801" : "rgba(255,255,255,0.85)",
-                    cursor: "pointer",
-                    padding: 6,
-                  }}
-                >
-                  <Icon icon={t.icon as any} />
-                  <div style={{ fontSize: 11, marginTop: 2 }}>{t.label}</div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div
-            style={{
-              position: "absolute",
-              left: "50%",
-              transform: "translateX(-50%) translateY(0%)",
-              zIndex: 70,
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
+              marginBottom: 6,
             }}
           >
             <div
               style={{
-                width: 64,
-                height: 64,
-                borderRadius: "50%",
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                width: 80,
+                height: 6,
+                background: "rgba(255,255,255,0.12)",
+                borderRadius: 9999,
+                transform: "translateY(2px)",
               }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "50%",
-                  background:
-                    "conic-gradient(#05A143 0deg 180deg, #FBB801 180deg 360deg)",
-                  animation: "spin 3s linear infinite",
-                }}
-              />
-              <div
-                onClick={() => navigate("/search")}
-                style={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: "50%",
-                  background: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  position: "relative",
-                  cursor: "pointer",
-                  boxShadow: "0 6px 18px rgba(0,0,0,0.18)",
-                }}
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ transform: "translateY(1px)" }}
-                >
-                  <path
-                    d="M12 5v14"
-                    stroke="#055140"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M5 12h14"
-                    stroke="#055140"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-            </div>
+            />
           </div>
 
           <div
             style={{
-              display: "flex",
+              background: "#055140",
+              borderTopLeftRadius: 48,
+              borderTopRightRadius: 48,
+              boxShadow: "0 -6px 20px rgba(0,0,0,0.12)",
+              position: "relative",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
               alignItems: "center",
-              gap: 24,
-              justifyContent: "flex-end",
-              flex: 1,
+              height: 70,
+              padding: "0 10px",
+              gap: 0,
             }}
           >
-            {TABS.slice(2).map((t) => {
-              const active = location.pathname === t.path;
-              return (
-                <button
-                  key={t.path}
-                  onClick={() => go(t.path)}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                onClick={() => go("/")}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "none",
+                  background: "transparent",
+                  color:
+                    location.pathname === "/"
+                      ? "#FBB801"
+                      : "rgba(255,255,255,0.85)",
+                  cursor: "pointer",
+                  padding: 6,
+                  width: "100%",
+                }}
+              >
+                <Icon icon="zi-home" />
+                <div style={{ fontSize: 11, marginTop: 2 }}>Trang chủ</div>
+              </button>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                onClick={() => go("/search")}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "none",
+                  background: "transparent",
+                  color:
+                    location.pathname === "/search"
+                      ? "#FBB801"
+                      : "rgba(255,255,255,0.85)",
+                  cursor: "pointer",
+                  padding: 6,
+                  width: "100%",
+                }}
+              >
+                <Icon icon="zi-search" />
+                <div style={{ fontSize: 11, marginTop: 2 }}>Tìm kiếm</div>
+              </button>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                position: "relative",
+              }}
+            >
+              <div
+                style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: "50%",
+                  position: "absolute",
+                  left: "50%",
+                  top: "-28px",
+                  transform: "translateX(-50%)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  zIndex: 70,
+                }}
+              >
+                <div
+                  className="outer-circle"
                   style={{
-                    position: "relative",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "50%",
+                    background:
+                      "conic-gradient(#05A143 0deg 180deg, #FBB801 180deg 360deg)",
+                    animation: "spin 3s linear infinite",
+                  }}
+                />
+                <div
+                  onClick={() => setShowMore(true)}
+                  style={{
+                    width: 39,
+                    height: 39,
+                    borderRadius: "50%",
+                    background: "#fff",
                     display: "flex",
-                    flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
-                    border: "none",
-                    background: "transparent",
-                    color: active ? "#FBB801" : "rgba(255,255,255,0.85)",
+                    position: "relative",
                     cursor: "pointer",
-                    padding: 6,
+                    boxShadow: "0 6px 18px rgba(0,0,0,0.18)",
                   }}
                 >
-                  {t.path === "/cart" ? (
-                    <CartIcon active={active} />
-                  ) : (
-                    <Icon icon={t.icon as any} />
-                  )}
-                  <div style={{ fontSize: 11, marginTop: 2 }}>{t.label}</div>
-                </button>
-              );
-            })}
+                  <Icon icon="zi-plus" style={{ fontSize: 32, color: "#055140" }} />
+                </div>
+              </div>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                onClick={() => go("/cart")}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "none",
+                  background: "transparent",
+                  color:
+                    location.pathname === "/cart"
+                      ? "#FBB801"
+                      : "rgba(255,255,255,0.85)",
+                  cursor: "pointer",
+                  padding: 6,
+                  width: "100%",
+                }}
+              >
+                <CartIcon active={location.pathname === "/cart"} />
+                <div style={{ fontSize: 11, marginTop: 2 }}>Giỏ hàng</div>
+              </button>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                onClick={() => go("/profile")}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "none",
+                  background: "transparent",
+                  color:
+                    location.pathname === "/profile"
+                      ? "#FBB801"
+                      : "rgba(255,255,255,0.85)",
+                  cursor: "pointer",
+                  padding: 6,
+                  width: "100%",
+                }}
+              >
+                <Icon icon="zi-user" />
+                <div style={{ fontSize: 11, marginTop: 2 }}>Tài khoản</div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <ActionSheet
+        visible={showMore}
+        title="Chức năng khác"
+        actions={[
+          ...MORE_ACTIONS.map((item) => ({
+            text: item.text,
+            onClick: () => {
+              setShowMore(false);
+              navigate(item.path);
+            },
+          })),
+          { text: "Đóng", close: true, danger: true },
+        ]}
+        onClose={() => setShowMore(false)}
+      />
+    </>
   );
 };
 

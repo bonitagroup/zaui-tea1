@@ -42,10 +42,8 @@ export const Utilities: React.FC = () => {
     return (
         <Box className="w-full px-1.5 mt-3.5 pb-4">
             <Box className="bg-[#0a5132] rounded-2xl p-3.5 space-y-4 shadow">
-                {/* Phần hiển thị thông tin người dùng */}
                 <Box className="bg-[#055140] rounded-xl text-white mb-2 flex flex-col gap-1">
                     <div className="flex items-center gap-3 p-2">
-                        {/* Avatar */}
                         {userInfo.avatar ? (
                             <img
                                 src={userInfo.avatar}
@@ -58,7 +56,6 @@ export const Utilities: React.FC = () => {
                             </div>
                         )}
 
-                        {/* Tên và điểm */}
                         <div className="flex-1">
                             <p className="text-sm">Xin chào,</p>
                             <p className="font-semibold text-yellow-300">
@@ -77,7 +74,6 @@ export const Utilities: React.FC = () => {
                     <div className="h-[1.5px] w-full bg-white mt-1" />
                 </Box>
 
-                {/* Các nút tiện ích */}
                 <Box className="grid grid-cols-2 gap-4">
                     {buttons.map((btn, i) => (
                         <button

@@ -21,10 +21,10 @@ export const RecommendContent: FC = () => {
           <Icon icon="zi-info-circle-solid" className="text-[#0a5132] text-5xl" />
         </Box>
         <Box className="flex-1 ml-2.5 ">
-          <Text className="text-[#0a5132] font-semibold text-xl">
+          <Text className="text-[#0a5132] font-semibold text-lg">
             Gợi ý cho bạn
           </Text>
-          <Text className="text-[#0a5132] text-xs block">
+          <Text size="xxSmall" className="text-[#0a5132] block">
             Sản phẩm đặc biệt của chúng tôi
           </Text>
         </Box>
@@ -43,17 +43,6 @@ export const RecommendContent: FC = () => {
                         alt={product.name}
                         className="w-full h-full object-cover block"
                       />
-                      {product.sale && (
-                        <Text
-                          size="xxxxSmall"
-                          className="absolute right-3 top-3 uppercase bg-green text-white h-6 px-2 rounded-full"
-                          style={{ transform: "translateZ(0)" }}
-                        >
-                          {product.sale.type === "percent"
-                            ? `Giảm ${product.sale.percent * 100}%`
-                            : `Giảm ${product.sale.amount}`}
-                        </Text>
-                      )}
                     </div>
 
                     <Box className="p-3">

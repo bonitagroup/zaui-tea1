@@ -20,19 +20,19 @@ export const ProductListContent: FC = () => {
   };
   return (
     <>
-      <Box className="flex items-center justify-between p-2.5 mb-1.5">
-        <Box className="flex items-start">
+      <Box className="flex items-center justify-between p-2 mb-0.5">
+        <Box className="flex items-center">
           <Box className="pl-px">
             <Icon
               icon="zi-more-diamond-solid"
-              className="text-[#0a5132] text-5xl"
+              className="text-[#0a5132] text-4xl"
             />
           </Box>
-          <Box className="flex-1 ml-2.5">
-            <Text className="text-[#0a5132] font-semibold text-xl">
+          <Box className="flex-1 ml-2">
+            <Text className="text-[#0a5132] font-semibold text-lg">
               Sản phẩm nổi bật
             </Text>
-            <Text className="text-[#0a5132] text-xs block">
+            <Text size="xxxSmall" className="text-[#0a5132] block">
               Danh sách sản phẩm bán chạy nhất
             </Text>
           </Box>
@@ -40,14 +40,14 @@ export const ProductListContent: FC = () => {
 
         <button
           onClick={() => gotoCategory(categories[0]?.id)}
-          className="flex items-center gap-1 bg-white text-[#0a5132] text-sm font-medium px-3 py-1.5 rounded-md border border-[#0a5132] hover:bg-[#a6d1b7] active:scale-95 transition"
+          className="flex items-center gap-1 bg-white text-[#0a5132] text-sm font-medium px-2.5 py-1 rounded-lg border border-[#0a5132] hover:bg-[#a6d1b7] active:scale-95 transition"
         >
-          <Icon icon="zi-more-grid-solid" className="text-xl bottom-0.5" />
-          <span className="font-bold">Xem thêm</span>
+          <Icon icon="zi-more-grid-solid" className="text-lg bottom-1" />
+          <span className="font-bold text-xs te">Xem thêm</span>
         </button>
       </Box>
 
-      <Box className="grid grid-cols-2 gap-4 ">
+      <Box className="grid grid-cols-2 gap-3.5 px-4">
         {products.map((product) => (
           <ProductItem key={product.id} product={product} />
         ))}
