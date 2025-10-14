@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { Box, Header, Text } from "zmp-ui";
-import logo from "static/logo.png";
+import logo from "../../static/logo.png";
 import appConfig from "../../../app-config.json";
-import { getConfig } from "utils/config";
-import { useHeaderHiddenOnScroll } from "hooks";
+import { getConfig } from "../../utils/config";
+import { useHeaderHiddenOnScroll } from "../../hooks";
 
 export const Welcome: FC = () => {
   const hidden = useHeaderHiddenOnScroll();

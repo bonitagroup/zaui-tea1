@@ -5,8 +5,14 @@
     "price": 35000,
     "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-1.webp",
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["coffee", "drinks"],
-    "variantId": ["size", "topping"]
+    "categoryId": [
+      "coffee",
+      "drinks"
+    ],
+    "variantId": [
+      "size",
+      "topping"
+    ]
   },
   {
     "id": 2,
@@ -14,8 +20,13 @@
     "price": 45000,
     "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-2.webp",
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["coffee"],
-    "variantId": ["size", "topping"]
+    "categoryId": [
+      "coffee"
+    ],
+    "variantId": [
+      "size",
+      "topping"
+    ]
   },
   {
     "id": 3,
@@ -23,8 +34,13 @@
     "price": 30000,
     "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-3.webp",
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["food", "bread"],
-    "variantId": ["size"]
+    "categoryId": [
+      "food",
+      "bread"
+    ],
+    "variantId": [
+      "size"
+    ]
   },
   {
     "id": 4,
@@ -32,8 +48,12 @@
     "price": 28000,
     "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-4.webp",
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["food"],
-    "variantId": ["size"]
+    "categoryId": [
+      "food"
+    ],
+    "variantId": [
+      "size"
+    ]
   },
   {
     "id": 5,
@@ -41,8 +61,14 @@
     "price": 35000,
     "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-5.webp",
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["coffee", "matcha"],
-    "variantId": ["size", "topping"]
+    "categoryId": [
+      "coffee",
+      "matcha"
+    ],
+    "variantId": [
+      "size",
+      "topping"
+    ]
   },
   {
     "id": 6,
@@ -50,8 +76,14 @@
     "price": 38000,
     "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-6.webp",
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["coffee", "milktea"],
-    "variantId": ["size", "topping"]
+    "categoryId": [
+      "coffee",
+      "milktea"
+    ],
+    "variantId": [
+      "size",
+      "topping"
+    ]
   },
   {
     "id": 7,
@@ -59,8 +91,13 @@
     "price": 32000,
     "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-7.webp",
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["coffee"],
-    "variantId": ["size", "topping"]
+    "categoryId": [
+      "coffee"
+    ],
+    "variantId": [
+      "size",
+      "topping"
+    ]
   },
   {
     "id": 8,
@@ -68,8 +105,17 @@
     "price": 25000,
     "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-8.webp",
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["matcha"],
-    "variantId": ["size", "topping"]
+    "categoryId": [
+      "matcha"
+    ],
+    "variantId": [
+      "size",
+      "topping"
+    ],
+    "sale": {
+      "type": "fixed",
+      "amount": 20000
+    }
   },
   {
     "id": 9,
@@ -81,8 +127,15 @@
       "percent": 0.2
     },
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["coffee", "milktea", "drinks"],
-    "variantId": ["size", "topping"]
+    "categoryId": [
+      "coffee",
+      "milktea",
+      "drinks"
+    ],
+    "variantId": [
+      "size",
+      "topping"
+    ]
   },
   {
     "id": 10,
@@ -94,8 +147,14 @@
       "amount": 7000
     },
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["coffee", "drinks"],
-    "variantId": ["size", "topping"]
+    "categoryId": [
+      "coffee",
+      "drinks"
+    ],
+    "variantId": [
+      "size",
+      "topping"
+    ]
   },
   {
     "id": 11,
@@ -103,8 +162,13 @@
     "price": 55000,
     "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-rect-3.webp",
     "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": ["milktea"],
-    "variantId": ["size", "topping"],
+    "categoryId": [
+      "milktea"
+    ],
+    "variantId": [
+      "size",
+      "topping"
+    ],
     "sale": {
       "type": "percent",
       "percent": 0.5

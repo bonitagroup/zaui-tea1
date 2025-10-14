@@ -1,8 +1,8 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router";
 import { Icon } from "zmp-ui";
-import { useVirtualKeyboardVisible } from "hooks";
-import { getConfig } from "utils/config";
+import { useVirtualKeyboardVisible } from "../hooks";
+import { getConfig } from "../utils/config";
 import { CartIcon } from "./cart-icon";
 
 type Tab = {
@@ -79,8 +79,8 @@ const Navigation: React.FC = () => {
         <div
           style={{
             background: "#055140",
-            borderTopLeftRadius: 18,
-            borderTopRightRadius: 18,
+            borderTopLeftRadius: 55,
+            borderTopRightRadius: 55,
             boxShadow: "0 -6px 20px rgba(0,0,0,0.12)",
             position: "relative",
             display: "flex",

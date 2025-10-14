@@ -7,7 +7,7 @@ import { Endow } from "./endow";
 import { Categories } from "./categories";
 import { Recommend } from "./recommend";
 import { ProductList } from "./product-list";
-import { Divider } from "components/divider";
+import { Divider } from "../../components/divider";
 
 const HomePage: React.FunctionComponent = () => {
   return (

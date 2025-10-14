@@ -1,8 +1,8 @@
 import React, { FC, useMemo, useState } from "react";
 import { useRecoilState } from "recoil";
-import { selectedDeliveryTimeState } from "state";
-import { displayDate, displayHalfAnHourTimeRange } from "utils/date";
-import { matchStatusBarColor } from "utils/device";
+import { selectedDeliveryTimeState } from "../../state";
+import { displayDate, displayHalfAnHourTimeRange } from "../../utils/date";
+import { matchStatusBarColor } from "../../utils/device";
 import { Picker } from "zmp-ui";
 
 // Opening hours: 7:00 - 21:00
@@ -68,8 +68,8 @@ export const TimePicker: FC = () => {
       formatPickedValueDisplay={({ date, time }) =>
         date && time
           ? `${displayHalfAnHourTimeRange(new Date(time.value))}, ${displayDate(
-              new Date(date.value)
-            )}`
+            new Date(date.value)
+          )}`
           : `Chọn thời gian`
       }
       onChange={({ date, time }) => {

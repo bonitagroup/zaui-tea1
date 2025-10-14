@@ -2,16 +2,16 @@ import React, { FC } from "react";
 import { Route, Routes } from "react-router";
 import { Box } from "zmp-ui";
 import { Navigation } from "./navigation";
-import HomePage from "pages/index";
-import CategoryPage from "pages/category";
-import CartPage from "pages/cart";
-import NotificationPage from "pages/endow";
-import ProfilePage from "pages/profile";
-import SearchPage from "pages/search";
-import CheckoutResultPage from "pages/result";
+import HomePage from "../pages/index";
+import CategoryPage from "../pages/category";
+import CartPage from "../pages/cart";
+import NotificationPage from "../pages/endow";
+import ProfilePage from "../pages/profile";
+import SearchPage from "../pages/search";
+import CheckoutResultPage from "../pages/result";
 import { getSystemInfo } from "zmp-sdk";
 import { ScrollRestoration } from "./scroll-restoration";
-import { useHandlePayment } from "hooks";
+import { useHandlePayment } from "../hooks";
 
 if (import.meta.env.DEV) {
   document.body.style.setProperty("--zaui-safe-area-inset-top", "24px");

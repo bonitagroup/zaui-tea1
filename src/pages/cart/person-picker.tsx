@@ -1,11 +1,11 @@
-import { ListItem } from "components/list-item";
+import { ListItem } from "../../components/list-item";
 import React, { FC } from "react";
 import {
   useRecoilValue,
   useRecoilValueLoadable,
   useSetRecoilState,
 } from "recoil";
-import { phoneState, requestPhoneTriesState, userState } from "state";
+import { phoneState, requestPhoneTriesState, userState } from "../../state";
 
 export const PersonPicker: FC = () => {
   const user = useRecoilValueLoadable(userState);

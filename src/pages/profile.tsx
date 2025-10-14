@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import { Box, Header, Icon, Page, Text } from "zmp-ui";
-import subscriptionDecor from "static/subscription-decor.svg";
-import { ListRenderer } from "components/list-renderer";
-import { useToBeImplemented } from "hooks";
+import subscriptionDecor from "../static/subscription-decor.svg";
+import { ListRenderer } from "../components/list-renderer";
+import { useToBeImplemented } from "../hooks";
 import { useRecoilCallback } from "recoil";
-import { userState } from "state";
+import { userState } from "../state";
 
 const Subscription: FC = () => {
   const requestUserInfo = useRecoilCallback(

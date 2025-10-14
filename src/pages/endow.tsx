@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { ListRenderer } from "components/list-renderer";
+import { ListRenderer } from "../components/list-renderer";
 import { useRecoilValue } from "recoil";
-import { endowListState } from "state";
+import { endowListState } from "../state";
 import { Box, Header, Page, Text } from "zmp-ui";
-import { Divider } from "components/divider";
+import { Divider } from "../components/divider";
 
 const EndowList: FC = () => {
   const endows = useRecoilValue(endowListState);
