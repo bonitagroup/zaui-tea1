@@ -2,21 +2,21 @@
   {
     "id": "matcha",
     "name": "Trà xanh",
-    "icon": "./src/static/category-matcha.svg"
+    "icon": "category-matcha.svg"
   },
   {
     "id": "medicinalTea",
     "name": "Trà Dược",
-    "icon": "../src/static/category-medicinalTea.svg"
+    "icon": "category-medicinalTea.svg"
   },
   {
     "id": "juice",
     "name": "Trà Cụ",
-    "icon": "../src/static/category-teaTools.svg"
+    "icon": "category-teaTools.svg"
   },
   {
     "id": "food",
     "name": "Bánh Kẹo",
-    "icon": "../src/static/category-food.svg"
+    "icon": "category-food.svg"
   }
 ]
