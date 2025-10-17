@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Route, Routes } from "react-router";
+import { Route, Routes, useLocation } from "react-router";
 import { Box } from "zmp-ui";
 import { Navigation } from "./navigation";
 import HomePage from "../pages/index";
@@ -9,6 +9,7 @@ import NotificationPage from "../pages/endow";
 import ProfilePage from "../pages/profile";
 import SearchPage from "../pages/search";
 import CheckoutResultPage from "../pages/result";
+import ProductDetailPage from "../pages/product-detail";
 import { getSystemInfo } from "zmp-sdk";
 import { ScrollRestoration } from "./scroll-restoration";
 import { useHandlePayment } from "../hooks";
@@ -27,6 +28,8 @@ if (import.meta.env.DEV) {
 
 export const Layout: FC = () => {
   useHandlePayment();
+  const location = useLocation();
+  const isProductDetail = /^\/product\/\w+/.test(location.pathname);
 
   return (
     <Box flex flexDirection="column" className="h-screen">
@@ -40,9 +43,10 @@ export const Layout: FC = () => {
           <Route path="/cart" element={<CartPage />}></Route>
           <Route path="/profile" element={<ProfilePage />}></Route>
           <Route path="/result" element={<CheckoutResultPage />}></Route>
+          <Route path="/product/:id" element={<ProductDetailPage />}></Route>
         </Routes>
       </Box>
-      <Navigation />
+      {!isProductDetail && <Navigation />}
     </Box>
   );
 };

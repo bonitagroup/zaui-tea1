@@ -3,20 +3,29 @@ import { DisplayPrice } from "../../components/display/price";
 import { ProductPicker } from "../../components/product/picker";
 import { Section } from "../../components/section";
 import { ProductSlideSkeleton } from "../../components/skeletons";
-import React, { Suspense } from "react";
-import { FC } from "react";
+import React, { Suspense, FC } from "react";
 import { useRecoilValue } from "recoil";
 import { recommendProductsState } from "../../state";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Box, Text } from "zmp-ui";
-import { Icon } from "zmp-ui";
+import { Box, Text, Icon } from "zmp-ui";
+
+const images = import.meta.glob(
+  "../../static/page/product-list/*.{png,jpg,jpeg,svg,webp}",
+  { eager: true }
+) as Record<string, { default: string }>;
+
+const getImage = (filename: string): string => {
+  if (!filename) return "/fallback.svg";
+  const key = Object.keys(images).find((k) => k.includes(filename));
+  return key ? images[key].default : "/fallback.svg";
+};
 
 export const RecommendContent: FC = () => {
   const recommendProducts = useRecoilValue(recommendProductsState);
 
   return (
     <Box className="mb-4">
-      <Box className="flex items-start p-2.5 mb-1.5 ">
+      <Box className="flex items-start p-2.5 mb-0 ">
         <Box className="pl-px">
           <Icon icon="zi-info-circle-solid" className="text-[#0a5132] text-5xl" />
         </Box>
@@ -30,66 +39,50 @@ export const RecommendContent: FC = () => {
         </Box>
       </Box>
 
-      <Swiper slidesPerView={1.05} spaceBetween={16} className="px-8">
-        {recommendProducts.map((product) => (
-          <SwiperSlide key={product.id}>
-            <ProductPicker product={product}>
-              {({ open }) => (
-                <div onClick={open} className="cursor-pointer mb-1.5">
-                  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-                    <div className="w-full h-56 md:h-48 bg-skeleton">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover block"
-                      />
-                    </div>
+      <Swiper slidesPerView={1.05} spaceBetween={16} className="px-10">
+        {recommendProducts.map((product) => {
+          const imageSrc = getImage(product.image);
 
-                    <Box className="p-3">
-                      <Text size="small" className="line-clamp-2">
-                        {product.name}
-                      </Text>
-
-                      <div className="mt-2">
-                        <Text size="xxSmall" className="line-through text-gray">
-                          <DisplayPrice>{product.price}</DisplayPrice>
-                        </Text>
-                        <Text size="large" className="font-medium text-primary block mt-1 text-red-600">
-                          <FinalPrice>{product}</FinalPrice>
-                        </Text>
+          return (
+            <SwiperSlide key={product.id}>
+              <ProductPicker product={product}>
+                {({ open }) => (
+                  <div onClick={open} className="cursor-pointer mb-1.5">
+                    <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-zinc-300">
+                      <div className="w-full aspect-[4/5] bg-white relative overflow-hidden">
+                        <img
+                          src={imageSrc}
+                          alt={product.name}
+                          loading="lazy"
+                          className="absolute inset-0 w-full h-full object-contain bg-white"
+                        />
                       </div>
-                    </Box>
+
+                      <Box className="p-3">
+                        <Text size="small" className="line-clamp-2 font-medium">
+                          {product.name}
+                        </Text>
+
+                        <div className="mt-2">
+                          <Text size="xxSmall" className="line-through text-gray">
+                            <DisplayPrice>{product.price}</DisplayPrice>
+                          </Text>
+                          <Text
+                            size="large"
+                            className="font-semibold text-red-600 block mt-1"
+                          >
+                            <FinalPrice>{product}</FinalPrice>
+                          </Text>
+                        </div>
+                      </Box>
+                    </div>
                   </div>
-                </div>
-              )}
-            </ProductPicker>
-          </SwiperSlide>
-        ))}
+                )}
+              </ProductPicker>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </Box>
-  );
-};
-
-export const RecommendFallback: FC = () => {
-  const recommendProducts = [...new Array(6)];
-
-  return (
-    <Section title="Gợi ý cho bạn" padding="title-only" className="">
-      <Swiper slidesPerView={1.25} spaceBetween={16} className="px-4">
-        {recommendProducts.map((_, i) => (
-          <SwiperSlide key={i}>
-            <ProductSlideSkeleton />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </Section>
-  );
-};
-
-export const Recommend: FC = () => {
-  return (
-    <Suspense fallback={<RecommendFallback />}>
-      <RecommendContent />
-    </Suspense>
   );
 };

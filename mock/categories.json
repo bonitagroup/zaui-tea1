@@ -1,5 +1,10 @@
 [
   {
+    "id": "all",
+    "name": "Tất cả",
+    "icon": "category-matcha.svg"
+  },
+  {
     "id": "matcha",
     "name": "Trà xanh",
     "icon": "category-matcha.svg"
@@ -10,12 +15,12 @@
     "icon": "category-medicinalTea.svg"
   },
   {
-    "id": "juice",
+    "id": "teaTools",
     "name": "Trà Cụ",
     "icon": "category-teaTools.svg"
   },
   {
-    "id": "food",
+    "id": "confectionery",
     "name": "Bánh Kẹo",
     "icon": "category-food.svg"
   }

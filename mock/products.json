@@ -1,177 +1,512 @@
 [
   {
     "id": 1,
-    "name": "Caramel Latte",
-    "price": 35000,
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-1.webp",
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
+    "name": "Hộp Trà Biếu Vạn Thịnh Song Trà",
+    "price": 650000,
+    "finalPrice": 630000,
+    "favorite": true,
+    "image": "van-thinh-song-tra.jpg",
+    "description": "Hộp trà biếu cao cấp Vạn Thịnh Song Trà - món quà sang trọng thể hiện sự tri ân và kính trọng.",
+    "sale": {
+      "type": "fixed",
+      "amount": 20000
+    },
     "categoryId": [
-      "coffee",
-      "drinks"
+      "matcha",
+      "all"
     ],
     "variantId": [
       "size",
-      "topping"
+      "box"
     ]
   },
   {
     "id": 2,
-    "name": "Mocha Frappuccino",
-    "price": 45000,
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-2.webp",
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": [
-      "coffee"
-    ],
-    "variantId": [
-      "size",
-      "topping"
-    ]
-  },
-  {
-    "id": 3,
-    "name": "Grilled Pork Banh Mi",
-    "price": 30000,
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-3.webp",
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": [
-      "food",
-      "bread"
-    ],
-    "variantId": [
-      "size"
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Pizza",
-    "price": 28000,
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-4.webp",
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": [
-      "food"
-    ],
-    "variantId": [
-      "size"
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Vanilla Latte",
-    "price": 35000,
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-5.webp",
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": [
-      "coffee",
-      "matcha"
-    ],
-    "variantId": [
-      "size",
-      "topping"
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Caramel Macchiato",
-    "price": 38000,
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-6.webp",
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": [
-      "coffee",
-      "milktea"
-    ],
-    "variantId": [
-      "size",
-      "topping"
-    ]
-  },
-  {
-    "id": 7,
-    "name": "Espresso",
-    "price": 32000,
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-7.webp",
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": [
-      "coffee"
-    ],
-    "variantId": [
-      "size",
-      "topping"
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Green Tea Latte",
-    "price": 25000,
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-square-8.webp",
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": [
-      "matcha"
-    ],
-    "variantId": [
-      "size",
-      "topping"
-    ],
-    "sale": {
-      "type": "fixed",
-      "amount": 20000
-    }
-  },
-  {
-    "id": 9,
-    "name": "Bộ 3 Blue Corner Coffee siêu HOT",
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-rect-1.webp",
-    "price": 25000,
-    "sale": {
-      "type": "percent",
-      "percent": 0.2
-    },
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
-    "categoryId": [
-      "coffee",
-      "milktea",
-      "drinks"
-    ],
-    "variantId": [
-      "size",
-      "topping"
-    ]
-  },
-  {
-    "id": 10,
-    "name": "Combo Hi Tea Aroma",
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-rect-2.webp",
-    "price": 57000,
+    "name": "Hộp Trà Biếu Vạn Khang Song Trà",
+    "price": 620000,
+    "image": "van-khang-song-tra.jpg",
+    "description": "Trà Vạn Khang Song Trà mang hương vị thanh thuần, tượng trưng cho sức khỏe và hạnh phúc.",
     "sale": {
       "type": "fixed",
       "amount": 7000
     },
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
     "categoryId": [
-      "coffee",
-      "drinks"
+      "matcha",
+      "all"
     ],
     "variantId": [
       "size",
-      "topping"
+      "box"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Hộp Trà Biếu Vạn Thọ Song Trà",
+    "price": 700000,
+    "image": "van-tho-song-tra.jpg",
+    "description": "Vạn Thọ Song Trà là lựa chọn hoàn hảo cho những dịp chúc thọ, chúc phúc an khang.",
+    "sale": {
+      "type": "fixed",
+      "amount": 7000
+    },
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "box"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Hộp Trà Biếu Vạn Hỷ Song Trà",
+    "price": 690000,
+    "image": "van-hy-song-tra.jpg",
+    "description": "Hộp trà biếu cao cấp Vạn Hỷ Song Trà tượng trưng cho niềm vui và sự may mắn viên mãn.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "box"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Hỷ Song Trà - Bộ Trà Biếu Cao Cấp",
+    "price": 850000,
+    "image": "hy-song-tra.jpg",
+    "description": "Bộ trà biếu cao cấp Hỷ Song Trà mang đậm tinh hoa trà Việt, quà tặng sang trọng cho đối tác và người thân.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "box"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Mạn Thái Trà - Trà Móc Câu Ngon",
+    "price": 320000,
+    "image": "man-thai-tra.jpg",
+    "description": "Mạn Thái Trà - dòng trà móc câu thơm dịu, vị chát nhẹ, thích hợp thưởng thức hằng ngày.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Vạn Thịnh Trà - Trà Đinh Thượng Hạng",
+    "price": 480000,
+    "image": "van-thinh-tra.jpg",
+    "description": "Vạn Thịnh Trà được tuyển chọn từ búp trà non, đem đến vị ngọt hậu thanh tao.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Vạn Khang Trà - Trà Đinh Hảo Hạng",
+    "price": 450000,
+    "image": "van-khang-tra.jpg",
+    "description": "Vạn Khang Trà là biểu tượng cho an khang và thịnh vượng, hương vị đậm đà tinh tế.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Hồng Hỷ Trà - Hồng Trà Shan Tuyết",
+    "price": 520000,
+    "image": "hong-hy-tra.png",
+    "description": "Hồng Hỷ Trà Shan Tuyết mang hương mật ong dịu nhẹ, vị ngọt đậm đà đặc trưng của núi rừng Tây Bắc.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Vạn Hỷ Trà - Trà Đinh Nõn",
+    "price": 460000,
+    "image": "van-hy-tra.jpg",
+    "description": "Vạn Hỷ Trà Đinh Nõn mang đến trải nghiệm tinh tế với hương trà đậm vị truyền thống.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size"
     ]
   },
   {
     "id": 11,
-    "name": "Milk Tea Combo",
-    "price": 55000,
-    "image": "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/product-rect-3.webp",
-    "description": "There is a set of mock banners available <u>here</u> in three colours and in a range of standard banner sizes",
+    "name": "Vạn Thọ Trà - Trà Nõn Tôm Thượng Hạng",
+    "price": 550000,
+    "image": "van-tho-tra.jpg",
+    "description": "Trà nõn tôm thượng hạng từ vùng đất Thái Nguyên – tinh khiết và ngọt hậu.",
     "categoryId": [
-      "milktea"
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Hộp Trà Biếu Vạn Lộc Song Trà",
+    "price": 720000,
+    "image": "van-loc-song-tra.jpg",
+    "description": "Vạn Lộc Song Trà – biểu trưng cho tài lộc và thịnh vượng, món quà hoàn hảo cho dịp Tết.",
+    "categoryId": [
+      "matcha",
+      "all"
     ],
     "variantId": [
       "size",
-      "topping"
+      "box"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Vạn Lộc Trà - Trà Nõn Tôm Hảo Hạng",
+    "price": 480000,
+    "image": "van-loc-tra.jpg",
+    "description": "Trà nõn tôm hảo hạng, vị thanh dịu và hậu ngọt lâu dài – thích hợp làm quà tặng.",
+    "categoryId": [
+      "matcha",
+      "all"
     ],
-    "sale": {
-      "type": "percent",
-      "percent": 0.5
-    }
+    "variantId": [
+      "size"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Hộp Trà Biếu Vạn Phúc Song Trà",
+    "price": 750000,
+    "image": "van-phuc-song-tra.jpg",
+    "description": "Hộp trà biếu Vạn Phúc Song Trà – biểu tượng của phúc lành và hạnh phúc viên mãn.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "box"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Vạn Phúc Trà - Trà Móc Câu Thượng Hạng",
+    "price": 390000,
+    "image": "van-phuc-tra.jpg",
+    "description": "Trà móc câu thượng hạng với hương vị thanh mát, được tuyển chọn kỹ càng từ búp trà non.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Trà Đinh Ngọc - Trà Đỉnh Cao Cấp",
+    "price": 680000,
+    "image": "tra-dinh-ngoc.jpg",
+    "description": "Trà Đinh Ngọc – tinh túy của nghệ thuật trà Việt, hương vị nhẹ nhàng và thanh khiết.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Trà Dây Tuyết - Thanh Nhiệt Giải Độc",
+    "price": 180000,
+    "image": "tra-day-tuyet.jpg",
+    "description": "Trà Dây Tuyết thiên nhiên giúp thanh nhiệt, giải độc gan và hỗ trợ tiêu hóa hiệu quả.",
+    "categoryId": [
+      "medicinalTea",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "pack"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Trà Mãng Cầu - Tăng Cường Sức Khỏe",
+    "price": 150000,
+    "image": "tra-mang-cau.jpg",
+    "description": "Trà Mãng Cầu thơm dịu, hỗ trợ miễn dịch, giảm căng thẳng và giúp ngủ ngon.",
+    "categoryId": [
+      "medicinalTea",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "pack"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Trà Atiso - Giải Độc Gan",
+    "price": 190000,
+    "image": "tra-atiso.jpg",
+    "description": "Trà Atiso từ Đà Lạt, giúp mát gan, đẹp da và hỗ trợ tiêu hóa.",
+    "categoryId": [
+      "medicinalTea",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "pack"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Trà Mầm GABA - Thư Giãn Giấc Ngủ",
+    "price": 250000,
+    "image": "tra-mam-gaba.jpg",
+    "description": "Trà mầm GABA hỗ trợ an thần, giảm stress và cải thiện chất lượng giấc ngủ.",
+    "categoryId": [
+      "medicinalTea",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "pack"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Gạt Tàn Thuốc Lá - Gốm Sứ Bát Tràng",
+    "price": 120000,
+    "image": "gat-tan-bat-trang.jpg",
+    "description": "Gạt tàn gốm sứ Bát Tràng cao cấp, thiết kế sang trọng và dễ vệ sinh.",
+    "categoryId": [
+      "teaTools",
+      "all"
+    ],
+    "variantId": [
+      "color",
+      "style"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Lọ Đựng Tăm - Gốm Sứ Bát Tràng",
+    "price": 90000,
+    "image": "lo-dung-tam-bat-trang.jpg",
+    "description": "Lọ đựng tăm gốm sứ Bát Tràng nhỏ gọn, tinh tế, phù hợp bàn trà hoặc phòng khách.",
+    "categoryId": [
+      "teaTools",
+      "all"
+    ],
+    "variantId": [
+      "color",
+      "style"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Tống Trà Cao Cấp - Gốm Sứ Bát Tràng",
+    "price": 350000,
+    "image": "tong-tra-bat-trang.jpg",
+    "description": "Tống trà gốm sứ cao cấp dùng để chia trà, mang phong cách tinh tế và cổ điển.",
+    "categoryId": [
+      "teaTools",
+      "all"
+    ],
+    "variantId": [
+      "color",
+      "style"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Hũ Đựng Trà - Gốm Sứ Bát Tràng",
+    "price": 260000,
+    "image": "hu-dung-tra-bat-trang.jpg",
+    "description": "Hũ đựng trà gốm sứ Bát Tràng giúp bảo quản trà khô, chống ẩm mốc và giữ hương vị.",
+    "categoryId": [
+      "teaTools",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "style"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Cúc Cổ Trường Thọ - Bộ Ấm Chén Bát Tràng",
+    "price": 780000,
+    "image": "am-chen-cuc-co-truong-tho.jpg",
+    "description": "Bộ ấm chén gốm sứ Cúc Cổ Trường Thọ Bát Tràng mang vẻ đẹp cổ điển, ý nghĩa trường thọ và bình an.",
+    "categoryId": [
+      "teaTools",
+      "all"
+    ],
+    "variantId": [
+      "set",
+      "style"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Quý Tộc Sơn Thúy - Bộ Ấm Chén Bát Tràng",
+    "price": 950000,
+    "image": "am-chen-quy-toc-son-thuy.jpg",
+    "description": "Bộ ấm chén Quý Tộc Sơn Thúy được chế tác tinh xảo, phù hợp cho phòng trà và quà tặng cao cấp.",
+    "categoryId": [
+      "teaTools",
+      "all"
+    ],
+    "variantId": [
+      "set",
+      "style"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Trúc Lâm Thất Hiền - Bộ Ấm Chén Bát Tràng",
+    "price": 890000,
+    "image": "am-chen-truc-lam-that-hien.jpg",
+    "description": "Bộ ấm chén Trúc Lâm Thất Hiền mang đậm hồn Việt, tượng trưng cho sự tao nhã và tri thức.",
+    "categoryId": [
+      "teaTools",
+      "all"
+    ],
+    "variantId": [
+      "set",
+      "style"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Bánh Trung Thu Thập Cẩm",
+    "price": 120000,
+    "image": "banh-trung-thu-thap-cam.jpg",
+    "description": "Bánh trung thu thập cẩm truyền thống với nhân đầy đặn, vị ngọt bùi hấp dẫn.",
+    "categoryId": [
+      "confectionery",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "box"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Bánh Trung Thu Trà Xanh Phô Mai",
+    "price": 130000,
+    "image": "banh-trung-thu-tra-xanh-pho-mai.jpg",
+    "description": "Sự kết hợp tinh tế giữa trà xanh thanh mát và phô mai béo ngậy, hương vị hiện đại cho mùa trăng.",
+    "categoryId": [
+      "confectionery",
+      "all"
+    ],
+    "variantId": [
+      "size",
+      "box"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Chè Lam Mật - Đặc Sản Truyền Thống",
+    "price": 85000,
+    "image": "che-lam-mat.jpg",
+    "description": "Chè lam mật thơm dẻo, vị ngọt dịu từ mật mía và gừng, món quà quê đậm đà hồn Việt.",
+    "categoryId": [
+      "confectionery",
+      "all"
+    ],
+    "variantId": [
+      "pack"
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Chè Lam Matcha - Biến Tấu Hiện Đại",
+    "price": 95000,
+    "image": "che-lam-matcha.jpg",
+    "description": "Chè lam matcha kết hợp giữa vị trà xanh thanh mát và hương gừng truyền thống, độc đáo khó quên.",
+    "categoryId": [
+      "confectionery",
+      "all"
+    ],
+    "variantId": [
+      "pack"
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Kẹo Dồi Lạc Đỏ - Hương Vị Truyền Thống",
+    "price": 75000,
+    "image": "keo-doi-lac-do.jpg",
+    "description": "Kẹo dồi lạc đỏ giòn tan, vị béo ngậy của đậu phộng và hương thơm mật mía đặc trưng.",
+    "categoryId": [
+      "confectionery",
+      "all"
+    ],
+    "variantId": [
+      "pack"
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Kẹo Lạc Đỏ - Ngọt Bùi Hấp Dẫn",
+    "price": 70000,
+    "image": "keo-lac-do.jpg",
+    "description": "Kẹo lạc đỏ truyền thống, ngọt bùi, giòn thơm – món ăn vặt thân quen mỗi dịp lễ Tết.",
+    "categoryId": [
+      "confectionery",
+      "all"
+    ],
+    "variantId": [
+      "pack"
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Kẹo Vừng Ta - Giòn Tan Dân Dã",
+    "price": 65000,
+    "image": "keo-vung-ta.jpg",
+    "description": "Kẹo vừng ta giòn rụm, thơm bùi, mang hương vị tuổi thơ đậm đà của làng quê Việt.",
+    "categoryId": [
+      "confectionery",
+      "all"
+    ],
+    "variantId": [
+      "pack"
+    ]
   }
 ]

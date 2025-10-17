@@ -46,10 +46,6 @@ export function calcFinalPrice(product: Product, options?: SelectedOptions) {
   return finalPrice;
 }
 
-export function getDummyImage(filename: string) {
-  return `https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/${filename}`;
-}
-
 export function isIdentical(
   option1: SelectedOptions,
   option2: SelectedOptions,
@@ -69,7 +65,7 @@ export function isIdentical(
       Array.isArray(option1Value) &&
       Array.isArray(option2Value) &&
       [...option1Value].sort().toString() ===
-        [...option2Value].sort().toString();
+      [...option2Value].sort().toString();
 
     if (option1Value !== option2Value && !areEqual) {
       return false;

@@ -37,8 +37,8 @@ export const Endow: React.FC = () => {
     if (endows.length === 0) return null;
 
     return (
-        <Box className="w-full px-1 mt-2.5">
-            <Box className="bg-[#B02020] rounded-full flex items-center p-1 mb-2">
+        <Box className="w-full px-1 mt-3">
+            <Box className="bg-[#B02020] rounded-full flex items-center p-2 mb-2">
                 <Box className="pl-4">
                     <GiftIcon />
                 </Box>

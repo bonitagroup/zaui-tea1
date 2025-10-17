@@ -41,7 +41,7 @@ export const Categories: FC = () => {
       </Box>
 
       <Box className="bg-white grid grid-cols-4 gap-4 p-4">
-        {categories.map((category, i) => (
+        {categories.slice(1).map((category, i) => (
           <div
             key={i}
             onClick={() => gotoCategory(category.id)}

@@ -8,6 +8,17 @@ import { cartState } from "../../state";
 import { CartItem } from "../../types/cart";
 import { Box, Text } from "zmp-ui";
 
+const images = import.meta.glob(
+  "../../static/page/product-list/*.{png,jpg,jpeg,svg,webp}",
+  { eager: true }
+) as Record<string, { default: string }>;
+
+const getImage = (filename: string): string => {
+  if (!filename) return "/fallback.svg";
+  const key = Object.keys(images).find((k) => k.includes(filename));
+  return key ? images[key].default : "/fallback.svg";
+};
+
 export const CartItems: FC = () => {
   const cart = useRecoilValue(cartState);
   const [editingItem, setEditingItem] = useState<CartItem | undefined>();
@@ -27,16 +38,25 @@ export const CartItems: FC = () => {
               renderKey={({ product, options, quantity }) =>
                 JSON.stringify({ product: product.id, options, quantity })
               }
-              renderLeft={(item) => (
-                <img
-                  className="w-10 h-10 rounded-lg"
-                  src={item.product.image}
-                />
-              )}
+              renderLeft={(item) => {
+                const imageSrc = getImage(item.product.image);
+                return (
+                  <Box className="w-12 aspect-[4/5] bg-white rounded-lg overflow-hidden flex items-center justify-center">
+                    <img
+                      className="max-w-full max-h-full object-contain"
+                      src={imageSrc}
+                      alt={item.product.name}
+                      loading="lazy"
+                    />
+                  </Box>
+                );
+              }}
               renderRight={(item) => (
                 <Box flex className="space-x-1">
                   <Box className="space-y-1 flex-1">
-                    <Text size="small">{item.product.name}</Text>
+                    <Text size="small" className="font-medium line-clamp-1">
+                      {item.product.name}
+                    </Text>
                     <Text className="text-gray" size="xSmall">
                       <FinalPrice options={item.options}>
                         {item.product}

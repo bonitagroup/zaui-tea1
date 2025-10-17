@@ -43,12 +43,12 @@ export const ProductListContent: FC = () => {
           className="flex items-center gap-1 bg-white text-[#0a5132] text-sm font-medium px-2.5 py-1 rounded-lg border border-[#0a5132] hover:bg-[#a6d1b7] active:scale-95 transition"
         >
           <Icon icon="zi-more-grid-solid" className="text-lg bottom-1" />
-          <span className="font-bold text-xs te">Xem thêm</span>
+          <span className="font-bold text-xs">Xem thêm</span>
         </button>
       </Box>
 
       <Box className="grid grid-cols-2 gap-3.5 px-4">
-        {products.map((product) => (
+        {products.slice(0, 12).map((product) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </Box>
