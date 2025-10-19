@@ -31,7 +31,7 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
             loading="lazy"
             src={imageSrc}
             alt={product.name}
-            className="absolute inset-0 w-full h-full object-fill bg-white"
+            className="absolute inset-0 w-full h-full object-contain bg-white"
           />
         </Box>
 

@@ -10,6 +10,12 @@ import ProfilePage from "../pages/profile";
 import SearchPage from "../pages/search";
 import CheckoutResultPage from "../pages/result";
 import ProductDetailPage from "../pages/product-detail";
+import PointsPage from "../pages/points";
+import TasksPage from "../pages/tasks";
+import ReferralPage from "../pages/referral";
+import GamePage from "../pages/game";
+import AddressPage from "../pages/cart/address";
+import AddressesPage from "../pages/cart/addresses";
 import { getSystemInfo } from "zmp-sdk";
 import { ScrollRestoration } from "./scroll-restoration";
 import { useHandlePayment } from "../hooks";
@@ -29,7 +35,8 @@ if (import.meta.env.DEV) {
 export const Layout: FC = () => {
   useHandlePayment();
   const location = useLocation();
-  const isProductDetail = /^\/product\/\w+/.test(location.pathname);
+  const hideNavigation =
+    /^\/product(\/|$)/.test(location.pathname) || /^\/category(\/|$)/.test(location.pathname);
 
   return (
     <Box flex flexDirection="column" className="h-screen">
@@ -38,6 +45,12 @@ export const Layout: FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/search" element={<SearchPage />}></Route>
+          <Route path="/points" element={<PointsPage />}></Route>
+          <Route path="/tasks" element={<TasksPage />}></Route>
+          <Route path="/referral" element={<ReferralPage />}></Route>
+          <Route path="/game" element={<GamePage />}></Route>
+          <Route path="/cart/address" element={<AddressPage />}></Route>
+          <Route path="/cart/addresses" element={<AddressesPage />}></Route>
           <Route path="/category" element={<CategoryPage />}></Route>
           <Route path="/notification" element={<NotificationPage />}></Route>
           <Route path="/cart" element={<CartPage />}></Route>
@@ -46,7 +59,7 @@ export const Layout: FC = () => {
           <Route path="/product/:id" element={<ProductDetailPage />}></Route>
         </Routes>
       </Box>
-      {!isProductDetail && <Navigation />}
+      {!hideNavigation && <Navigation />}
     </Box>
   );
 };

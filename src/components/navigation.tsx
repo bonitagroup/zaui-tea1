@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { Icon } from "zmp-ui";
 import { ActionSheet } from "./fullscreen-sheet";
 import { useVirtualKeyboardVisible } from "../hooks";
-import { getConfig } from "../utils/config";
 import { CartIcon } from "./cart-icon";
 
 type Tab = {
@@ -15,7 +14,7 @@ type Tab = {
 
 const TABS: Tab[] = [
   { path: "/", label: "Trang chủ", icon: "zi-home" },
-  { path: "/search", label: "Tìm kiếm", icon: "zi-search" },
+  { path: "/points", label: "Tích điểm", icon: "zi-star" },
   { label: "Thêm", icon: "zi-plus-circle" },
   { path: "/cart", label: "Giỏ hàng", icon: "zi-cart" },
   { path: "/profile", label: "Tài khoản", icon: "zi-user" },
@@ -32,6 +31,17 @@ const Navigation: React.FC = () => {
   const location = useLocation();
   const keyboardVisible = useVirtualKeyboardVisible();
   const [showMore, setShowMore] = useState(false);
+  const [voucherSheetOpen, setVoucherSheetOpen] = useState(false);
+
+  useEffect(() => {
+    const onVoucher = (e: any) => {
+      const val = e?.detail ?? (e?.detail === undefined ? false : e);
+      setVoucherSheetOpen(!!val);
+    };
+    window.addEventListener("voucher-sheet-open", onVoucher as EventListener);
+    return () =>
+      window.removeEventListener("voucher-sheet-open", onVoucher as EventListener);
+  }, []);
 
   const go = (path?: string) => {
     if (path && location.pathname !== path) navigate(path);
@@ -39,7 +49,7 @@ const Navigation: React.FC = () => {
 
   const safeBottom = "env(safe-area-inset-bottom, 0px)";
 
-  if (keyboardVisible) return null;
+  if (keyboardVisible || voucherSheetOpen) return null;
 
   return (
     <>
@@ -124,7 +134,7 @@ const Navigation: React.FC = () => {
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <button
-                onClick={() => go("/search")}
+                onClick={() => go("/points")}
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -141,8 +151,8 @@ const Navigation: React.FC = () => {
                   width: "100%",
                 }}
               >
-                <Icon icon="zi-search" />
-                <div style={{ fontSize: 11, marginTop: 2 }}>Tìm kiếm</div>
+                <Icon icon="zi-star" />
+                <div style={{ fontSize: 11, marginTop: 2 }}>Tích điểm</div>
               </button>
             </div>
             <div

@@ -1,0 +1,70 @@
+[
+    {
+        "id": "hn",
+        "name": "Hà Nội",
+        "districts": [
+            {
+                "id": "hn-ba-dinh",
+                "name": "Ba Đình",
+                "wards": [
+                    {
+                        "id": "hn-ba-dinh-dien-bien",
+                        "name": "Điện Biên"
+                    },
+                    {
+                        "id": "hn-ba-dinh-truc-bach",
+                        "name": "Trúc Bạch"
+                    }
+                ]
+            },
+            {
+                "id": "hn-hoan-kiem",
+                "name": "Hoàn Kiếm",
+                "wards": [
+                    {
+                        "id": "hn-hoan-kiem-hang-bac",
+                        "name": "Hàng Bạc"
+                    },
+                    {
+                        "id": "hn-hoan-kiem-hang-may",
+                        "name": "Hàng Mã"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "hcm",
+        "name": "TP. Hồ Chí Minh",
+        "districts": [
+            {
+                "id": "hcm-1",
+                "name": "Quận 1",
+                "wards": [
+                    {
+                        "id": "hcm-1-ben-nghe",
+                        "name": "Bến Nghé"
+                    },
+                    {
+                        "id": "hcm-1-ben-thanh",
+                        "name": "Bến Thành"
+                    }
+                ]
+            },
+            {
+                "id": "hcm-3",
+                "name": "Quận 3",
+                "wards": [
+                    {
+                        "id": "hcm-3-vietnam",
+                        "name": "Văn Thánh"
+                    },
+                    {
+                        "id": "hcm-3-ward-2",
+                        "name": "Ward 2"
+                    }
+                ]
+            }
+        ]
+    }
+]

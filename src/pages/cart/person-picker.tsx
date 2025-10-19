@@ -1,8 +1,8 @@
 import { ListItem } from "../../components/list-item";
 import React, { FC } from "react";
 import {
-  useRecoilValue,
   useRecoilValueLoadable,
+  useRecoilValue,
   useSetRecoilState,
 } from "recoil";
 import { phoneState, requestPhoneTriesState, userState } from "../../state";
@@ -14,9 +14,13 @@ export const PersonPicker: FC = () => {
   return (
     <ListItem
       title={
-        user.state === "hasValue" ? `${user.contents.name} - ${phone}` : phone
+        user.state === "hasValue" && user.contents?.name
+          ? `${user.contents.name} - ${phone}`
+          : phone || "Chọn người nhận"
       }
       subtitle="Người nhận"
+      onClick={() => {
+      }}
     />
   );
 };

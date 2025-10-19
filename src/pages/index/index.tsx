@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Box, Page } from "zmp-ui";
 import { Utilities } from "./utilities";
-import { Welcome } from "./welcome";
+import { Welcome } from "./header";
 import { Banner } from "./banner";
 import { Endow } from "./endow";
 import { Categories } from "./categories";

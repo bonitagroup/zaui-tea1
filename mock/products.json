@@ -131,20 +131,6 @@
     ]
   },
   {
-    "id": 9,
-    "name": "Hồng Hỷ Trà - Hồng Trà Shan Tuyết",
-    "price": 520000,
-    "image": "hong-hy-tra.png",
-    "description": "Hồng Hỷ Trà Shan Tuyết mang hương mật ong dịu nhẹ, vị ngọt đậm đà đặc trưng của núi rừng Tây Bắc.",
-    "categoryId": [
-      "matcha",
-      "all"
-    ],
-    "variantId": [
-      "size"
-    ]
-  },
-  {
     "id": 10,
     "name": "Vạn Hỷ Trà - Trà Đinh Nõn",
     "price": 460000,
@@ -202,7 +188,7 @@
     ]
   },
   {
-    "id": 14,
+    "id": 9,
     "name": "Hộp Trà Biếu Vạn Phúc Song Trà",
     "price": 750000,
     "image": "van-phuc-song-tra.jpg",
@@ -214,6 +200,20 @@
     "variantId": [
       "size",
       "box"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Hồng Hỷ Trà - Hồng Trà Shan Tuyết",
+    "price": 520000,
+    "image": "hong-hy-tra.png",
+    "description": "Hồng Hỷ Trà Shan Tuyết mang hương mật ong dịu nhẹ, vị ngọt đậm đà đặc trưng của núi rừng Tây Bắc.",
+    "categoryId": [
+      "matcha",
+      "all"
+    ],
+    "variantId": [
+      "size"
     ]
   },
   {

@@ -1,0 +1,14 @@
+[
+    {
+        "id": "v1",
+        "title": "Giảm 20.000 đ",
+        "amount": 20000,
+        "description": "Voucher của Trà Dược Việt Nam - Giảm 20.000 đ"
+    },
+    {
+        "id": "v2",
+        "title": "Giảm 50.000 đ",
+        "amount": 50000,
+        "description": "Voucher sự kiện - Giảm 50.000 đ"
+    }
+]

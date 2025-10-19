@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Icon } from "zmp-ui";
 import { useNavigate } from "react-router-dom";
 import { getUserInfo } from "zmp-sdk/apis";
+import { UtilitiesButton } from "types/utilities";
 
 export const Utilities: React.FC = () => {
     const navigate = useNavigate();
@@ -23,11 +24,11 @@ export const Utilities: React.FC = () => {
         fetchUserInfo();
     }, []);
 
-    const buttons = [
-        { label: "Nhiệm Vụ Của Tôi", icon: "zi-note", side: "right", path: "/" },
-        { label: "Giới Thiệu Khách Hàng", icon: "zi-add-member-solid", side: "left", path: "/search" },
-        { label: "Chơi Game Nhận Quà", icon: "zi-favorite-list", side: "right", path: "/cart" },
-        { label: "Hội Viên Thân Thiết", icon: "zi-star", side: "left", path: "/profile" },
+    const buttons: UtilitiesButton[] = [
+        { label: "Nhiệm Vụ Của Tôi", icon: "zi-note", side: "right", path: "/tasks" },
+        { label: "Giới Thiệu Khách Hàng", icon: "zi-add-member-solid", side: "left", path: "/referral" },
+        { label: "Chơi Game Nhận Quà", icon: "zi-favorite-list", side: "right", path: "/game" },
+        { label: "Tích điểm", icon: "zi-star", side: "left", path: "/points" },
     ];
 
     return (

@@ -3,9 +3,9 @@ import { ListItem } from "../../components/list-item";
 import React, { FC, useState } from "react";
 import { createPortal } from "react-dom";
 import {
-  useRecoilValue,
   useRecoilValueLoadable,
   useSetRecoilState,
+  useRecoilValue,
 } from "recoil";
 import {
   nearbyStoresState,
@@ -48,13 +48,14 @@ export const StorePicker: FC = () => {
                   highLight: store.id === selectedStore?.id,
                   onClick: () => {
                     setSelectedStoreIndex(i);
+                    setVisible(false);
                   },
-                }),
+                })
               ),
               [{ text: "Đóng", close: true, danger: true }],
             ]}
-          ></ActionSheet>,
-          document.body,
+          />,
+          document.body
         )}
     </>
   );

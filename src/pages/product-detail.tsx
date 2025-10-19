@@ -5,6 +5,7 @@ import { productsState } from "../state";
 import { Box, Page, Header, Text, Button, Icon } from "zmp-ui";
 import { ProductPicker } from "../components/product/picker";
 import { FinalPrice } from "../components/display/final-price";
+import { ProductItem } from "../components/product/item";
 
 const images = import.meta.glob(
     "../static/page/product-list/*.{png,jpg,jpeg,svg,webp}",
@@ -105,6 +106,30 @@ const ProductDetailPage: React.FC = () => {
                         </Box>
                     ))
                 )}
+            </Box>
+
+            <Box className="bg-white p-1 mt-3 rounded-xl shadow-sm">
+                <Box className="flex items-center">
+                    <Box className="pl-px">
+                        <Icon
+                            icon="zi-more-diamond-solid"
+                            className="text-[#0a5132] text-4xl"
+                        />
+                    </Box>
+                    <Box className="flex-1 ml-2">
+                        <Text className="text-[#0a5132] font-semibold text-lg">
+                            Sản phẩm nổi bật
+                        </Text>
+                        <Text size="xxxSmall" className="text-[#0a5132] block">
+                            Danh sách sản phẩm bán chạy nhất
+                        </Text>
+                    </Box>
+                </Box>
+                <Box className="grid grid-cols-2 gap-3.5 px-1">
+                    {products.slice(0, 12).map((product) => (
+                        <ProductItem key={product.id} product={product} />
+                    ))}
+                </Box>
             </Box>
 
             <Box className="fixed bottom-0 left-0 right-0 h-14 bg-white shadow-lg flex justify-end px-4 py-2 z-50">
