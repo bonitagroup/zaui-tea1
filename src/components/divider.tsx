@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { Box } from "zmp-ui";
-import { BoxProps } from "zmp-ui/box";
+import React, { FC } from 'react';
+import { Box } from 'zmp-ui';
+import { BoxProps } from 'zmp-ui/box';
 
 export const Divider: FC<{ size?: number; className?: string } & BoxProps> = ({
   size = 8,
@@ -10,9 +10,11 @@ export const Divider: FC<{ size?: number; className?: string } & BoxProps> = ({
     <Box
       style={{
         minHeight: size,
-        backgroundColor: "var(--zmp-background-color)",
+        backgroundColor: 'var(--zmp-background-color)',
       }}
       {...props}
     />
   );
 };
+
+export const DividerLine: React.FC = () => <div className="my-2 border-t border-gray-200" />;

@@ -1,9 +1,9 @@
-import { DisplayPrice } from "../../components/display/price";
-import React, { FC } from "react";
-import { useRecoilValue } from "recoil";
-import { totalPriceState, totalQuantityState } from "../../state";
-import pay from "../../utils/product";
-import { Box, Button, Text } from "zmp-ui";
+import { DisplayPrice } from '../../components/display/price';
+import React, { FC } from 'react';
+import { useRecoilValue } from 'recoil';
+import { totalPriceState, totalQuantityState } from '../../state';
+import pay from '../../utils/product';
+import { Box, Button, Text } from 'zmp-ui';
 
 export const CartPreview: FC = () => {
   const quantity = useRecoilValue(totalQuantityState);
@@ -23,13 +23,13 @@ export const CartPreview: FC = () => {
         </Box>
 
         <Button
-            type="highlight"
-             disabled={!quantity}
-             className="rounded-full px-8 py-2 text-white bg-[#0b4f3a] flex items-center justify-center text-sm"
-             onClick={() => pay(totalPrice)}
-            >
+          type="highlight"
+          disabled={!quantity}
+          className="rounded-full px-8 py-2 text-white bg-[#0b4f3a] flex items-center justify-center text-sm"
+          onClick={() => pay(totalPrice)}
+        >
           <span className="mr-2">🛒</span> Đặt hàng
-      </Button>
+        </Button>
       </Box>
     </Box>
   );

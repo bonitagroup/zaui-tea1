@@ -1,18 +1,14 @@
-import React, { FC, ReactNode, useEffect, useState } from "react";
-import { Box, Button, Header, Page, Text, useNavigate } from "zmp-ui";
-import {
-  AsyncCallbackFailObject,
-  CheckTransactionReturns,
-  Payment,
-} from "zmp-sdk";
-import { useLocation } from "react-router";
-import { useResetRecoilState } from "recoil";
-import { cartState } from "../state";
+import React, { FC, ReactNode, useEffect, useState } from 'react';
+import { Box, Button, Header, Page, Text, useNavigate } from 'zmp-ui';
+import { AsyncCallbackFailObject, CheckTransactionReturns, Payment } from 'zmp-sdk';
+import { useLocation } from 'react-router';
+import { useResetRecoilState } from 'recoil';
+import { cartState } from '../state';
 import {
   IconPaymentFail,
   IconPaymentLoading,
   IconPaymentSuccess,
-} from "../components/payment-icon";
+} from '../components/payment-icon';
 
 interface RenderResultProps {
   title?: string;
@@ -33,9 +29,9 @@ const CheckoutResultPage: FC = () => {
     const check = () => {
       let data = state;
       if (data) {
-        if ("path" in data) {
+        if ('path' in data) {
           data = data.path;
-        } else if ("data" in data) {
+        } else if ('data' in data) {
           data = data.data;
         }
       } else {
@@ -79,13 +75,13 @@ const CheckoutResultPage: FC = () => {
         if (paymentResult && paymentResult.resultCode) {
           if (paymentResult.resultCode === 1) {
             return render({
-              title: "Thanh toán thành công",
+              title: 'Thanh toán thành công',
               message: `Đơn hàng của bạn đã được thanh toán thành công. Đơn hàng của bạn sẽ được xử lý trong thời gian sớm nhất.`,
               icon: <IconPaymentSuccess />,
             });
           } else {
             return render({
-              title: "Thanh toán thất bại",
+              title: 'Thanh toán thất bại',
               message: `Có lỗi trong quá trình xử lý, vui lòng kiểm tra lại hoặc liên hệ Shop để được hỗ trợ`,
               icon: <IconPaymentFail />,
             });
@@ -108,8 +104,8 @@ const CheckoutResultPage: FC = () => {
       ))}
       {paymentResult && (
         <div className="p-4">
-          <Button fullWidth onClick={() => navigate("/", { replace: true })}>
-            {paymentResult.resultCode === 1 ? "Hoàn tất" : "Đóng"}
+          <Button fullWidth onClick={() => navigate('/', { replace: true })}>
+            {paymentResult.resultCode === 1 ? 'Hoàn tất' : 'Đóng'}
           </Button>
         </div>
       )}

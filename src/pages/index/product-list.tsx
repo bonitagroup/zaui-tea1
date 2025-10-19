@@ -1,12 +1,12 @@
-import React, { FC, Suspense } from "react";
-import { Section } from "../../components/section";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { productsState } from "../../state";
-import { Box, Icon, Text } from "zmp-ui";
-import { ProductItem } from "../../components/product/item";
-import { ProductItemSkeleton } from "../../components/skeletons";
-import { categoriesState, selectedCategoryIdState } from "../../state";
-import { useNavigate } from "react-router";
+import React, { FC, Suspense } from 'react';
+import { Section } from '../../components/section';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { productsState } from '../../state';
+import { Box, Icon, Text } from 'zmp-ui';
+import { ProductItem } from '../../components/product/item';
+import { ProductItemSkeleton } from '../../components/skeletons';
+import { categoriesState, selectedCategoryIdState } from '../../state';
+import { useNavigate } from 'react-router';
 
 export const ProductListContent: FC = () => {
   const categories = useRecoilValue(categoriesState);
@@ -16,22 +16,17 @@ export const ProductListContent: FC = () => {
 
   const gotoCategory = (categoryId: string) => {
     setSelectedCategoryId(categoryId);
-    navigate("/category");
+    navigate('/category');
   };
   return (
     <>
       <Box className="flex items-center justify-between p-2 mb-0.5">
         <Box className="flex items-center">
           <Box className="pl-px">
-            <Icon
-              icon="zi-more-diamond-solid"
-              className="text-[#0a5132] text-4xl"
-            />
+            <Icon icon="zi-more-diamond-solid" className="text-[#0a5132] text-4xl" />
           </Box>
           <Box className="flex-1 ml-2">
-            <Text className="text-[#0a5132] font-semibold text-lg">
-              Sản phẩm nổi bật
-            </Text>
+            <Text className="text-[#0a5132] font-semibold text-lg">Sản phẩm nổi bật</Text>
             <Text size="xxxSmall" className="text-[#0a5132] block">
               Danh sách sản phẩm bán chạy nhất
             </Text>

@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-import { Box, Icon, Text } from "zmp-ui";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { categoriesState, selectedCategoryIdState } from "../../state";
-import { useNavigate } from "react-router";
+import React, { FC } from 'react';
+import { Box, Icon, Text } from 'zmp-ui';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { categoriesState, selectedCategoryIdState } from '../../state';
+import { useNavigate } from 'react-router';
 
-const images = import.meta.glob("../../static/page/*.svg", { eager: true }) as Record<
+const images = import.meta.glob('../../static/page/*.svg', { eager: true }) as Record<
   string,
   { default: string }
 >;
@@ -16,12 +16,12 @@ export const Categories: FC = () => {
 
   const gotoCategory = (categoryId: string) => {
     setSelectedCategoryId(categoryId);
-    navigate("/category");
+    navigate('/category');
   };
 
   const getImage = (filename: string): string => {
     const key = `../../static/page/${filename}`;
-    return images[key]?.default ?? "/fallback.svg";
+    return images[key]?.default ?? '/fallback.svg';
   };
 
   return (
@@ -31,9 +31,7 @@ export const Categories: FC = () => {
           <Icon icon="zi-more-diamond-solid" className="text-[#0a5132] text-5xl" />
         </Box>
         <Box className="flex-1 ml-2.5">
-          <Text className="text-[#0a5132] font-semibold text-xl">
-            Danh mục sản phẩm
-          </Text>
+          <Text className="text-[#0a5132] font-semibold text-xl">Danh mục sản phẩm</Text>
           <Text className="text-[#0a5132] text-xs block">
             Tổng hợp các loại trà chất lượng, đa dạng hóa lựa chọn
           </Text>

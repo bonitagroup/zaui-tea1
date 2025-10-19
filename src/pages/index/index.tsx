@@ -1,13 +1,13 @@
-import React, { Suspense } from "react";
-import { Box, Page } from "zmp-ui";
-import { Utilities } from "./utilities";
-import { Welcome } from "./header";
-import { Banner } from "./banner";
-import { Endow } from "./endow";
-import { Categories } from "./categories";
-import { RecommendContent as Recommend } from "./recommend";
-import { ProductList } from "./product-list";
-import { Divider } from "../../components/divider";
+import React, { Suspense } from 'react';
+import { Box, Page } from 'zmp-ui';
+import { Utilities } from './utilities';
+import { Welcome } from './header';
+import { Banner } from './banner';
+import { Endow } from './endow';
+import { Categories } from './categories';
+import { RecommendContent as Recommend } from './recommend';
+import { ProductList } from './product-list';
+import { Divider } from '../../components/divider';
 
 const HomePage: React.FunctionComponent = () => {
   return (

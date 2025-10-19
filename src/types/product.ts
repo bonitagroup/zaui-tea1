@@ -1,11 +1,11 @@
 export interface PercentSale {
-  type: "percent";
+  type: 'percent';
   percent: number;
 }
 
 export interface FixedSale {
   amount: number;
-  type: "fixed";
+  type: 'fixed';
 }
 
 export type Sale = PercentSale | FixedSale;
@@ -23,25 +23,25 @@ export interface BaseVariant {
 }
 
 export interface SingleOptionVariant extends BaseVariant {
-  type: "single";
+  type: 'single';
   default?: string;
 }
 
 export interface MultipleOptionVariant extends BaseVariant {
-  type: "multiple";
+  type: 'multiple';
   default?: string[];
 }
 
 export type Variant = SingleOptionVariant | MultipleOptionVariant;
 
 export interface Product {
-  id: number;
+  id: number | string;
   name: string;
-  image: string;
   price: number;
-  categoryId: string[];
+  image: string;
   description?: string;
-  sale?: Sale;
-  variants?: Variant[];
-  favorite?: boolean;
+  sale?: any;
+  categoryId: string[];
+  variantId: string[];
+  [key: string]: any;
 }
