@@ -1,21 +1,21 @@
-import { FinalPrice } from "../../components/display/final-price";
-import { Sheet } from "../../components/fullscreen-sheet";
-import React, { FC, ReactNode, useEffect, useState } from "react";
-import { createPortal } from "react-dom";
-import { useSetRecoilState } from "recoil";
-import { cartState } from "../../state";
-import { SelectedOptions } from "../../types/cart";
-import { Product } from "../../types/product";
-import { isIdentical } from "../../utils/product";
-import { Box, Button, Text } from "zmp-ui";
-import { MultipleOptionPicker } from "./multiple-option-picker";
-import { QuantityPicker } from "./quantity-picker";
-import { SingleOptionPicker } from "./single-option-picker";
+import { FinalPrice } from '../../components/display/final-price';
+import { Sheet } from '../../components/fullscreen-sheet';
+import React, { FC, ReactNode, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { useSetRecoilState } from 'recoil';
+import { cartState } from '../../state';
+import { CartItem } from '../../types/cart';
+import { Product } from '../../types/product';
+import { isIdentical } from '../../utils/product';
+import { Box, Button, Text } from 'zmp-ui';
+import { MultipleOptionPicker } from './multiple-option-picker';
+import { QuantityPicker } from './quantity-picker';
+import { SingleOptionPicker } from './single-option-picker';
 
 export interface ProductPickerProps {
   product?: Product;
   selected?: {
-    options: SelectedOptions;
+    options: CartItem;
     quantity: number;
   };
   children: (methods: { open: () => void; close: () => void }) => ReactNode;
@@ -28,20 +28,16 @@ function getDefaultOptions(product?: Product) {
         Object.assign(options, {
           [variant.id]: variant.default,
         }),
-      {},
+      {}
     );
   }
   return {};
 }
 
-export const ProductPicker: FC<ProductPickerProps> = ({
-  children,
-  product,
-  selected,
-}) => {
+export const ProductPicker: FC<ProductPickerProps> = ({ children, product, selected }) => {
   const [visible, setVisible] = useState(false);
-  const [options, setOptions] = useState<SelectedOptions>(
-    selected ? selected.options : getDefaultOptions(product),
+  const [options, setOptions] = useState<CartItem>(
+    selected ? selected.options : getDefaultOptions(product)
   );
   const [quantity, setQuantity] = useState(1);
   const setCart = useSetRecoilState(cartState);
@@ -60,9 +56,7 @@ export const ProductPicker: FC<ProductPickerProps> = ({
         if (selected) {
           // updating an existing cart item, including quantity and size, or remove it if new quantity is 0
           const editing = cart.find(
-            (item) =>
-              item.product.id === product.id &&
-              isIdentical(item.options, selected.options),
+            (item) => item.product.id === product.id && isIdentical(item.options, selected.options)
           )!;
           if (quantity === 0) {
             res.splice(cart.indexOf(editing), 1);
@@ -71,7 +65,7 @@ export const ProductPicker: FC<ProductPickerProps> = ({
               (item, i) =>
                 i !== cart.indexOf(editing) &&
                 item.product.id === product.id &&
-                isIdentical(item.options, options),
+                isIdentical(item.options, options)
             )!;
             res.splice(cart.indexOf(editing), 1, {
               ...editing,
@@ -85,9 +79,7 @@ export const ProductPicker: FC<ProductPickerProps> = ({
         } else {
           // adding new item to cart, or merging if it already existed before
           const existed = cart.find(
-            (item) =>
-              item.product.id === product.id &&
-              isIdentical(item.options, options),
+            (item) => item.product.id === product.id && isIdentical(item.options, options)
           );
           if (existed) {
             res.splice(cart.indexOf(existed), 1, {
@@ -125,7 +117,7 @@ export const ProductPicker: FC<ProductPickerProps> = ({
                 <Text>
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: product.description ?? "",
+                      __html: product.description ?? '',
                     }}
                   ></div>
                 </Text>
@@ -133,7 +125,7 @@ export const ProductPicker: FC<ProductPickerProps> = ({
               <Box className="space-y-5">
                 {product.variants &&
                   product.variants.map((variant) =>
-                    variant.type === "single" ? (
+                    variant.type === 'single' ? (
                       <SingleOptionPicker
                         key={variant.id}
                         variant={variant}
@@ -158,21 +150,17 @@ export const ProductPicker: FC<ProductPickerProps> = ({
                           }))
                         }
                       />
-                    ),
+                    )
                   )}
                 <QuantityPicker value={quantity} onChange={setQuantity} />
                 {selected ? (
                   <Button
-                    variant={quantity > 0 ? "primary" : "secondary"}
-                    type={quantity > 0 ? "highlight" : "neutral"}
+                    variant={quantity > 0 ? 'primary' : 'secondary'}
+                    type={quantity > 0 ? 'highlight' : 'neutral'}
                     fullWidth
                     onClick={addToCart}
                   >
-                    {quantity > 0
-                      ? selected
-                        ? "Cập nhật giỏ hàng"
-                        : "Thêm vào giỏ hàng"
-                      : "Xoá"}
+                    {quantity > 0 ? (selected ? 'Cập nhật giỏ hàng' : 'Thêm vào giỏ hàng') : 'Xoá'}
                   </Button>
                 ) : (
                   <Button
@@ -189,7 +177,7 @@ export const ProductPicker: FC<ProductPickerProps> = ({
             </Box>
           )}
         </Sheet>,
-        document.body,
+        document.body
       )}
     </>
   );

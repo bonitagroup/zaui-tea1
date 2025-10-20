@@ -1,35 +1,32 @@
-import React, { FC } from "react";
-import { Route, Routes, useLocation } from "react-router";
-import { Box } from "zmp-ui";
-import { Navigation } from "./navigation";
-import HomePage from "../pages/index";
-import CategoryPage from "../pages/category";
-import CartPage from "../pages/cart";
-import NotificationPage from "../pages/endow";
-import ProfilePage from "../pages/profile";
-import SearchPage from "../pages/search";
-import CheckoutResultPage from "../pages/result";
-import ProductDetailPage from "../pages/product-detail";
-import PointsPage from "../pages/points";
-import TasksPage from "../pages/tasks";
-import ReferralPage from "../pages/referral";
-import GamePage from "../pages/game";
-import AddressPage from "../pages/cart/address";
-import AddressesPage from "../pages/cart/addresses";
-import { getSystemInfo } from "zmp-sdk";
-import { ScrollRestoration } from "./scroll-restoration";
-import { useHandlePayment } from "../hooks";
+import React, { FC } from 'react';
+import { Route, Routes, useLocation } from 'react-router';
+import { Box } from 'zmp-ui';
+import { Navigation } from './navigation';
+import HomePage from '../pages/index';
+import CategoryPage from '../pages/category';
+import CartPage from '../pages/cart';
+import NotificationPage from '../pages/endow';
+import ProfilePage from '../pages/profile';
+import SearchPage from '../pages/search';
+import CheckoutResultPage from '../pages/result';
+import ProductDetailPage from '../pages/product-detail';
+import PointsPage from '../pages/points';
+import TasksPage from '../pages/tasks';
+import ReferralPage from '../pages/referral';
+import GamePage from '../pages/game';
+import AddressPage from '../pages/cart/address';
+import AddressesPage from '../pages/cart/addresses';
+import OrdersPage from '../pages/orders';
+import { getSystemInfo } from 'zmp-sdk';
+import { ScrollRestoration } from './scroll-restoration';
+import { useHandlePayment } from '../hooks';
 
 if (import.meta.env.DEV) {
-  document.body.style.setProperty("--zaui-safe-area-inset-top", "24px");
-} else if (getSystemInfo().platform === "android") {
-  const statusBarHeight =
-    window.ZaloJavaScriptInterface?.getStatusBarHeight() ?? 0;
+  document.body.style.setProperty('--zaui-safe-area-inset-top', '24px');
+} else if (getSystemInfo().platform === 'android') {
+  const statusBarHeight = window.ZaloJavaScriptInterface?.getStatusBarHeight() ?? 0;
   const androidSafeTop = Math.round(statusBarHeight / window.devicePixelRatio);
-  document.body.style.setProperty(
-    "--zaui-safe-area-inset-top",
-    `${androidSafeTop}px`
-  );
+  document.body.style.setProperty('--zaui-safe-area-inset-top', `${androidSafeTop}px`);
 }
 
 export const Layout: FC = () => {
@@ -54,6 +51,7 @@ export const Layout: FC = () => {
           <Route path="/category" element={<CategoryPage />}></Route>
           <Route path="/notification" element={<NotificationPage />}></Route>
           <Route path="/cart" element={<CartPage />}></Route>
+          <Route path="/orders" element={<OrdersPage />}></Route>
           <Route path="/profile" element={<ProfilePage />}></Route>
           <Route path="/result" element={<CheckoutResultPage />}></Route>
           <Route path="/product/:id" element={<ProductDetailPage />}></Route>

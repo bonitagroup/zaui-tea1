@@ -75,10 +75,10 @@ const pay = (amount: number, description?: string) =>
     item: [],
     amount: amount,
     success: (data) => {
-      console.log('Payment success: ', data);
+      // Payment success handled in hooks
     },
     fail: (err) => {
-      console.log('Payment error: ', err);
+      // Payment error handled in hooks
     },
   });
 

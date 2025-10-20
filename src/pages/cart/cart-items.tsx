@@ -1,23 +1,22 @@
-import { FinalPrice } from "../../components/display/final-price";
-import { DisplaySelectedOptions } from "../../components/display/selected-options";
-import { ListRenderer } from "../../components/list-renderer";
-import { ProductPicker } from "../../components/product/picker";
-import React, { FC, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { cartState } from "../../state";
-import { CartItem } from "../../types/cart";
-import { Box, Text } from "zmp-ui";
-import { FaBoxOpen } from "react-icons/fa";
+import { FinalPrice } from '../../components/display/final-price';
+import { DisplaySelectedOptions } from '../../components/display/selected-options';
+import { ListRenderer } from '../../components/list-renderer';
+import { ProductPicker } from '../../components/product/picker';
+import React, { FC, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { cartState } from '../../state';
+import { CartItem } from '../../types/cart';
+import { Box, Text } from 'zmp-ui';
+import { FaBoxOpen } from 'react-icons/fa';
 
-const images = import.meta.glob(
-  "../../static/page/product-list/*.{png,jpg,jpeg,svg,webp}",
-  { eager: true }
-) as Record<string, { default: string }>;
+const images = import.meta.glob('../../static/page/product-list/*.{png,jpg,jpeg,svg,webp}', {
+  eager: true,
+}) as Record<string, { default: string }>;
 
 const getImage = (filename: string): string => {
-  if (!filename) return "/fallback.svg";
+  if (!filename) return '/fallback.svg';
   const key = Object.keys(images).find((k) => k.includes(filename));
-  return key ? images[key].default : "/fallback.svg";
+  return key ? images[key].default : '/fallback.svg';
 };
 
 export const CartItems: FC = () => {
@@ -35,7 +34,14 @@ export const CartItems: FC = () => {
       </Box>
 
       {cart.length > 0 ? (
-        <ProductPicker product={editingItem?.product} selected={editingItem}>
+        <ProductPicker
+          product={editingItem?.product}
+          selected={
+            editingItem
+              ? { options: editingItem.options, quantity: editingItem.quantity }
+              : undefined
+          }
+        >
           {({ open }) => (
             <ListRenderer
               items={cart}
@@ -75,17 +81,16 @@ export const CartItems: FC = () => {
                       </Text>
                     </Box>
                   </Box>
-                  <button className="ml-2 text-gray-400" aria-label="remove-item">✕</button>
+                  <button className="ml-2 text-gray-400" aria-label="remove-item">
+                    ✕
+                  </button>
                 </Box>
               )}
             />
           )}
         </ProductPicker>
       ) : (
-        <Text
-          className="bg-background rounded-xl py-8 px-4 text-center text-gray"
-          size="xxSmall"
-        >
+        <Text className="bg-background rounded-xl py-8 px-4 text-center text-gray" size="xxSmall">
           Không có sản phẩm trong giỏ hàng
         </Text>
       )}

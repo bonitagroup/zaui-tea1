@@ -20,6 +20,9 @@ export const Categories: FC = () => {
   };
 
   const getImage = (filename: string): string => {
+    if (filename === 'tea-leaves.png') {
+      return '/static/page/product-list/tea-leaves.png';
+    }
     const key = `../../static/page/${filename}`;
     return images[key]?.default ?? '/fallback.svg';
   };
@@ -39,7 +42,7 @@ export const Categories: FC = () => {
       </Box>
 
       <Box className="bg-white grid grid-cols-4 gap-4 p-4">
-        {categories.slice(1).map((category, i) => (
+        {categories.slice(0).map((category, i) => (
           <div
             key={i}
             onClick={() => gotoCategory(category.id)}

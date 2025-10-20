@@ -1,27 +1,43 @@
 [
   {
-    "id": "all",
-    "name": "Tất cả",
-    "icon": "category-matcha.svg"
-  },
-  {
     "id": "matcha",
-    "name": "Trà xanh",
-    "icon": "category-matcha.svg"
+    "name": "Trà Xanh",
+    "icon": "category-matcha.svg",
+    "subcategories": [
+      { "id": "all", "name": "Tất cả", "icon": "tea-leaves.png" },
+      { "id": "popular", "name": "Trà Phổ Thông", "icon": "tea-leaves.png" },
+      { "id": "premium", "name": "Trà Cao Cấp", "icon": "tea-leaves.png" },
+      { "id": "special", "name": "Trà Hảo Hạng", "icon": "tea-leaves.png" }
+    ]
   },
   {
     "id": "medicinalTea",
     "name": "Trà Dược",
-    "icon": "category-medicinalTea.svg"
+    "icon": "category-medicinalTea.svg",
+    "subcategories": [
+      { "id": "all", "name": "Tất cả", "icon": "tea-leaves.png" },
+      { "id": "detox", "name": "Thanh Nhiệt", "icon": "tea-leaves.png" },
+      { "id": "health", "name": "Bổ Dưỡng", "icon": "tea-leaves.png" }
+    ]
   },
   {
     "id": "teaTools",
     "name": "Trà Cụ",
-    "icon": "category-teaTools.svg"
+    "icon": "category-teaTools.svg",
+    "subcategories": [
+      { "id": "all", "name": "Tất cả", "icon": "tea-leaves.png" },
+      { "id": "set", "name": "Bộ Ấm Chén", "icon": "tea-leaves.png" },
+      { "id": "accessory", "name": "Phụ Kiện", "icon": "tea-leaves.png" }
+    ]
   },
   {
     "id": "confectionery",
     "name": "Bánh Kẹo",
-    "icon": "category-food.svg"
+    "icon": "category-food.svg",
+    "subcategories": [
+      { "id": "all", "name": "Tất cả", "icon": "tea-leaves.png" },
+      { "id": "cake", "name": "Bánh", "icon": "tea-leaves.png" },
+      { "id": "candy", "name": "Kẹo", "icon": "tea-leaves.png" }
+    ]
   }
 ]

@@ -1,10 +1,10 @@
 export type OrderStatus =
   | 'pending'
   | 'processing'
-  | 'delivering'
-  | 'delivered'
-  | 'returned'
-  | 'canceled';
+  | 'shipping'
+  | 'completed'
+  | 'cancelled'
+  | 'returned';
 
 export interface OrderItem {
   productId: number | string;
@@ -20,4 +20,7 @@ export interface Order {
   status: OrderStatus;
   createdAt: string;
   amount: number;
+  address?: string;
+  voucherId?: string;
+  total?: number;
 }

@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { Variant } from "types/product";
-import { Box, Radio, Text } from "zmp-ui";
+import React, { FC } from 'react';
+import { Variant } from '../../types/product';
+import { Box, Radio, Text } from 'zmp-ui';
 
 export const SingleOptionPicker: FC<{
   variant: Variant;
