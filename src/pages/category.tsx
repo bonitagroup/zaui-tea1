@@ -4,7 +4,6 @@ import { useRecoilValue } from 'recoil';
 import { categoriesState, productsByCategoryState } from '../state';
 import { Box, Header, Icon, Page, Text } from 'zmp-ui';
 import { useNavigate } from 'react-router';
-import { BiColor } from 'react-icons/bi';
 
 const images = import.meta.glob('../static/page/*.{png,svg}', { eager: true }) as Record<
   string,
@@ -85,18 +84,22 @@ const CategoryPicker: FC = () => {
           </Box>
         </div>
       )}
-
       <Suspense>
-        <CategoryProducts categoryId={activeKey} />
+        <CategoryProducts categoryId={activeKey} subId={subcategories[subIdx]?.id} />
       </Suspense>
     </>
   );
 };
 
-const CategoryProducts: FC<{ categoryId: string }> = ({ categoryId }) => {
+const CategoryProducts: FC<{ categoryId: string; subId?: string }> = ({ categoryId, subId }) => {
   const productsByCategory = useRecoilValue(productsByCategoryState(categoryId));
 
-  if (productsByCategory.length === 0) {
+  const filteredProducts =
+    subId && subId !== 'all'
+      ? productsByCategory.filter((p) => p.categoryId.includes(subId))
+      : productsByCategory;
+
+  if (filteredProducts.length === 0) {
     return (
       <Box className="flex-1 bg-background p-4 flex justify-center items-center">
         <Text size="xSmall" className="text-gray">
@@ -108,7 +111,7 @@ const CategoryProducts: FC<{ categoryId: string }> = ({ categoryId }) => {
 
   return (
     <Box className="bg-background grid grid-cols-2 gap-3 p-3">
-      {productsByCategory.map((product) => (
+      {filteredProducts.map((product) => (
         <ProductItem key={product.id} product={product} />
       ))}
     </Box>

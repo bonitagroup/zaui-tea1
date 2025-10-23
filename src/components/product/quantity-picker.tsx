@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import { Box, Button, Icon, Text } from "zmp-ui";
+import React, { FC } from 'react';
+import { Box, Button, Icon, Text } from 'zmp-ui';
 
 export const QuantityPicker: FC<{
   value: number;
@@ -19,9 +19,15 @@ export const QuantityPicker: FC<{
         }
       />
       <Box flex justifyContent="center" alignItems="center" className="flex-1">
-        <Text size="large" className="font-medium">
-          Số lượng: {value}
+        <Text size="large" className="font-medium text-zinc-500">
+          Số lượng:
         </Text>
+        <div
+          className="w-14 h-10 flex items-center justify-center border border-[#6a6e72] rounded-lg bg-white text-lg font-semibold"
+          style={{ margin: '0 8px' }}
+        >
+          {value}
+        </div>
       </Box>
       <Button
         onClick={() => onChange(value + 1)}

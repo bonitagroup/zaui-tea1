@@ -38,8 +38,8 @@ export const Utilities: React.FC = () => {
 
   return (
     <Box className="w-full px-2 mt-4 pb-4">
-      <Box className="bg-[#055140] rounded-2xl p-3 shadow space-y-3">
-        <Box className="bg-[#055140] rounded-xl text-white p-2.5">
+      <Box className="bg-[#0a5132] rounded-2xl p-3 shadow space-y-3">
+        <Box className="bg-[#0a5132] rounded-xl text-white p-2.5">
           <div className="grid grid-cols-2 items-center justify-between mb-1 ">
             <div className="flex items-center gap-2">
               {userInfo.avatar ? (

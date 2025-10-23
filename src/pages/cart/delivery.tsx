@@ -1,23 +1,22 @@
-import { ListRenderer } from "../../components/list-renderer";
-import React, { FC, useState } from "react";
-import { Box, Icon, Input, Text, Button, Switch } from "zmp-ui";
-import { useRecoilValue } from "recoil";
-import { totalPriceState } from "../../state";
-import { useNavigate } from "react-router";
-import locations from "../../../mock/vietnam_locations.json";
-import { SavedAddress } from "../../types/adress";
-import { Voucher } from "../../types/voucher";
-import vouchersMock from "../../../mock/vouchers.json";
-import { FaTruckFast } from "react-icons/fa6";
-import { BiSolidDiscount } from "react-icons/bi";
-import { FaRegCreditCard } from "react-icons/fa";
-import testimg from "@/static/iconsvg/cart-card.svg";
-
+import { ListRenderer } from '../../components/list-renderer';
+import React, { FC, useState } from 'react';
+import { Box, Icon, Input, Text, Button, Switch } from 'zmp-ui';
+import { useRecoilValue } from 'recoil';
+import { totalPriceState } from '../../state';
+import { useNavigate } from 'react-router';
+import locations from '../../../mock/vietnam_locations.json';
+import { SavedAddress } from '../../types/adress';
+import { Voucher } from '../../types/voucher';
+import vouchersMock from '../../../mock/vouchers.json';
+import { FaTruckFast } from 'react-icons/fa6';
+import { BiSolidDiscount } from 'react-icons/bi';
+import { FaRegCreditCard } from 'react-icons/fa';
+import testimg from '@/static/iconsvg/cart-card.svg';
 
 export const Delivery: FC = () => {
   const navigate = useNavigate();
 
-  const raw = typeof window !== "undefined" ? localStorage.getItem("addresses") : null;
+  const raw = typeof window !== 'undefined' ? localStorage.getItem('addresses') : null;
   const addresses = raw ? JSON.parse(raw) : [];
   const saved = addresses.find((a: any) => a.isDefault) || addresses[0] || null;
 
@@ -31,28 +30,32 @@ export const Delivery: FC = () => {
     const prov = provinces.find((p) => p.id === addr.provinceId);
     const dist = prov?.districts?.find((d: any) => d.id === addr.districtId);
     const ward = dist?.wards?.find((w: any) => w.id === addr.wardId);
-    return `${addr.street || ""}${ward ? ", " + ward.name : ""}${dist ? ", " + dist.name : ""}${prov ? ", " + prov.name : ""}`;
+    return `${addr.street || ''}${ward ? ', ' + ward.name : ''}${dist ? ', ' + dist.name : ''}${
+      prov ? ', ' + prov.name : ''
+    }`;
   };
 
   const [showVoucherSheet, setShowVoucherSheet] = useState(false);
   const [availableVouchers] = useState<Voucher[]>(() => (vouchersMock as Voucher[]) || []);
   const [selectedVoucher, setSelectedVoucher] = useState<Voucher | null>(() => {
     try {
-      const v = typeof window !== "undefined" ? localStorage.getItem("selectedVoucher") : null;
+      const v = typeof window !== 'undefined' ? localStorage.getItem('selectedVoucher') : null;
       return v ? (JSON.parse(v) as Voucher) : null;
     } catch {
       return null;
     }
   });
-  const [selectedVoucherId, setSelectedVoucherId] = useState<string | null>(selectedVoucher?.id ?? null);
-  const [voucherCodeInput, setVoucherCodeInput] = useState("");
+  const [selectedVoucherId, setSelectedVoucherId] = useState<string | null>(
+    selectedVoucher?.id ?? null
+  );
+  const [voucherCodeInput, setVoucherCodeInput] = useState('');
 
   const setVoucherSheetVisible = (v: boolean) => {
     setShowVoucherSheet(v);
     try {
-      window.dispatchEvent(new CustomEvent("voucher-sheet-open", { detail: !!v }));
+      window.dispatchEvent(new CustomEvent('voucher-sheet-open', { detail: !!v }));
     } catch (err) {
-      (window as any).dispatchEvent?.({ type: "voucher-sheet-open", detail: !!v });
+      (window as any).dispatchEvent?.({ type: 'voucher-sheet-open', detail: !!v });
     }
   };
 
@@ -60,21 +63,23 @@ export const Delivery: FC = () => {
     setSelectedVoucher(v);
     setSelectedVoucherId(v?.id ?? null);
     try {
-      if (v) localStorage.setItem("selectedVoucher", JSON.stringify(v));
-      else localStorage.removeItem("selectedVoucher");
-    } catch { }
+      if (v) localStorage.setItem('selectedVoucher', JSON.stringify(v));
+      else localStorage.removeItem('selectedVoucher');
+    } catch {}
     setVoucherSheetVisible(false);
   };
 
   const findVoucherByCode = (code: string) => {
     return availableVouchers.find(
-      (v) => v.id.toLowerCase() === code.toLowerCase() || v.title.toLowerCase().includes(code.toLowerCase())
+      (v) =>
+        v.id.toLowerCase() === code.toLowerCase() ||
+        v.title.toLowerCase().includes(code.toLowerCase())
     );
   };
 
   const [usePoints, setUsePoints] = useState(false);
   const [shippingFee] = useState(20000);
-  const [paymentMethod, setPaymentMethod] = useState<"cod" | "bank">("cod");
+  const [paymentMethod, setPaymentMethod] = useState<'cod' | 'bank'>('cod');
 
   const discount = selectedVoucher?.amount ?? 0;
   const computedDiscount = discount + (usePoints ? 0 : 0);
@@ -93,16 +98,12 @@ export const Delivery: FC = () => {
         <Text className="text-[#0b4f3a] font-semibold text-lg">Sản phẩm đặt mua</Text>
       </Box>
       <Box className="space-y-3 px-4 pb-36">
-
         <ListRenderer
           items={[
             {
               left: <Icon icon="zi-location" className="my-auto" />,
               right: (
-                <div
-                  onClick={() => navigate("/cart/addresses")}
-                  style={{ cursor: "pointer" }}
-                >
+                <div onClick={() => navigate('/cart/addresses')} style={{ cursor: 'pointer' }}>
                   {hasValidAddress ? (
                     <div className="flex items-center gap-2">
                       <div>
@@ -116,17 +117,13 @@ export const Delivery: FC = () => {
                     </div>
                   ) : (
                     <>
-                      <div className="text-sm font-medium text-red">
-                        Vui lòng chọn địa chỉ
-                      </div>
-                      <div className="text-xs text-gray">
-                        Chưa có địa chỉ nhận hàng được chọn
-                      </div>
+                      <div className="text-sm font-medium text-red">Vui lòng chọn địa chỉ</div>
+                      <div className="text-xs text-gray">Chưa có địa chỉ nhận hàng được chọn</div>
                     </>
                   )}
                 </div>
               ),
-            }
+            },
           ]}
           limit={5}
           renderLeft={(item) => item.left}
@@ -147,20 +144,22 @@ export const Delivery: FC = () => {
                 <div
                   onClick={() => {
                     setSelectedVoucherId(selectedVoucher?.id ?? null);
-                    setVoucherCodeInput("");
+                    setVoucherCodeInput('');
                     setVoucherSheetVisible(true);
                   }}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: 'pointer' }}
                 >
                   <div className="text-sm font-medium">
-                    {selectedVoucher ? selectedVoucher.title : "Chọn voucher"}
+                    {selectedVoucher ? selectedVoucher.title : 'Chọn voucher'}
                   </div>
                   <div className="text-xs text-gray">
-                    {selectedVoucher ? selectedVoucher.description ?? "" : "Chọn voucher để được giảm giá"}
+                    {selectedVoucher
+                      ? selectedVoucher.description ?? ''
+                      : 'Chọn voucher để được giảm giá'}
                   </div>
                 </div>
               ),
-            }
+            },
           ]}
           limit={5}
           renderLeft={(item) => item.left}
@@ -173,7 +172,7 @@ export const Delivery: FC = () => {
           <Text className="text-[#0b4f3a] font-semibold text-lg">Sản phẩm đặt mua</Text>
         </div>
         <Box className="bg-white rounded-xl p-4 mt-2 shadow-md">
-          <div className="divide-y">
+          <div className="divide-slate-200 divide-y">
             <div className="py-3 flex justify-between items-center">
               <div>
                 <div className="text-sm font-medium">{(totalPrice ?? 0).toLocaleString()} đ</div>
@@ -193,7 +192,9 @@ export const Delivery: FC = () => {
             <div className="py-3 flex items-center justify-between">
               <div>
                 <Text className="font-medium">Bạn chưa có điểm thưởng</Text>
-                <Text size="xSmall" className="text-gray">Mua hàng để tích lũy điểm bạn nhé!</Text>
+                <Text size="xSmall" className="text-gray">
+                  Mua hàng để tích lũy điểm bạn nhé!
+                </Text>
               </div>
               <div>
                 <Switch checked={usePoints} onChange={(v: any) => setUsePoints(!!v)} />
@@ -205,29 +206,71 @@ export const Delivery: FC = () => {
 
               <div className="space-y-2">
                 <button
-                  onClick={() => setPaymentMethod("bank")}
-                  className={`w-full flex items-center justify-between p-3 rounded-xl ${paymentMethod === "bank" ? "border-2 border-[#0a7a5b] bg-white" : "border border-[#E9EBED] bg-white"}`}
+                  onClick={() => setPaymentMethod('bank')}
+                  className={`w-full flex items-center justify-between p-3 rounded-xl ${
+                    paymentMethod === 'bank'
+                      ? 'border-2 border-[#0a7a5b] bg-white'
+                      : 'border border-[#E9EBED] bg-white'
+                  }`}
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-md bg-[#eaf6ef] flex items-center justify-center">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8h18v12H3z" fill="#0a7a5b" /></svg>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 8h18v12H3z" fill="#0a7a5b" />
+                      </svg>
                     </div>
                     <div className="text-sm">Chuyển khoản ngân hàng</div>
                   </div>
-                  <div>{paymentMethod === "bank" ? <svg width="18" height="18"><path d="M5 12l3 3 8-8" stroke="#0a7a5b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg> : <div className="w-4 h-4 rounded-full border" />}</div>
+                  <div>
+                    {paymentMethod === 'bank' ? (
+                      <svg width="18" height="18">
+                        <path
+                          d="M5 12l3 3 8-8"
+                          stroke="#0a7a5b"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    ) : (
+                      <div className="w-4 h-4 rounded-full border" />
+                    )}
+                  </div>
                 </button>
 
                 <button
-                  onClick={() => setPaymentMethod("cod")}
-                  className={`w-full flex items-center justify-between p-3 rounded-xl ${paymentMethod === "cod" ? "border-2 border-[#0a7a5b] bg-white" : "border border-[#E9EBED] bg-white"}`}
+                  onClick={() => setPaymentMethod('cod')}
+                  className={`w-full flex items-center justify-between p-3 rounded-xl ${
+                    paymentMethod === 'cod'
+                      ? 'border-2 border-[#0a7a5b] bg-white'
+                      : 'border border-[#E9EBED] bg-white'
+                  }`}
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-md bg-[#eaf6ef] flex items-center justify-center">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8h18v12H3z" fill="#0a7a5b" /></svg>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 8h18v12H3z" fill="#0a7a5b" />
+                      </svg>
                     </div>
-                    <div className="text-sm text-[#0a5132] font-semibold">Thanh toán khi nhận hàng (COD)</div>
+                    <div className="text-sm text-[#0a5132] font-semibold">
+                      Thanh toán khi nhận hàng (COD)
+                    </div>
                   </div>
-                  <div>{paymentMethod === "cod" ? <svg width="18" height="18"><path d="M5 12l3 3 8-8" stroke="#0a7a5b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg> : <div className="w-4 h-4 rounded-full border" />}</div>
+                  <div>
+                    {paymentMethod === 'cod' ? (
+                      <svg width="18" height="18">
+                        <path
+                          d="M5 12l3 3 8-8"
+                          stroke="#0a7a5b"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    ) : (
+                      <div className="w-4 h-4 rounded-full border" />
+                    )}
+                  </div>
                 </button>
               </div>
             </div>
@@ -239,16 +282,16 @@ export const Delivery: FC = () => {
             role="dialog"
             aria-modal="true"
             className="fixed inset-0 z-[9999] flex items-end justify-center"
-            style={{ background: "rgba(0,0,0,0.32)" }}
+            style={{ background: 'rgba(0,0,0,0.32)' }}
             onClick={() => setVoucherSheetVisible(false)}
           >
             <div
               className="w-full max-w-[680px] bg-white rounded-t-2xl shadow-xl"
               style={{
-                height: "82%",
-                display: "flex",
-                flexDirection: "column",
-                overflow: "hidden",
+                height: '82%',
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'hidden',
               }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -256,14 +299,32 @@ export const Delivery: FC = () => {
                 <div className="w-16 h-1.5 rounded-full bg-gray-300" />
               </div>
 
-              <div style={{ overflow: "auto", flex: 1 }}>
+              <div style={{ overflow: 'auto', flex: 1 }}>
                 <div className="p-5">
                   <div className="flex items-center gap-3">
-                    <div style={{ width: 56, height: 56, borderRadius: 12, background: "#eaf6ef", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div
+                      style={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: 12,
+                        background: '#eaf6ef',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                        <path d="M3 8h18v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8z" stroke="#0a7a5b" strokeWidth="1.2" />
+                        <path
+                          d="M3 8h18v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8z"
+                          stroke="#0a7a5b"
+                          strokeWidth="1.2"
+                        />
                         <path d="M12 8V3" stroke="#0a7a5b" strokeWidth="1.2" />
-                        <path d="M7 8V4c0-1.1.9-2 2-2s2 .9 2 2" stroke="#0a7a5b" strokeWidth="1.2" />
+                        <path
+                          d="M7 8V4c0-1.1.9-2 2-2s2 .9 2 2"
+                          stroke="#0a7a5b"
+                          strokeWidth="1.2"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -287,7 +348,7 @@ export const Delivery: FC = () => {
                         if (v) {
                           setSelectedVoucherId(v.id);
                         } else {
-                          alert("Mã không hợp lệ");
+                          alert('Mã không hợp lệ');
                         }
                       }}
                     >
@@ -300,8 +361,21 @@ export const Delivery: FC = () => {
                     {availableVouchers.map((v) => {
                       const active = selectedVoucherId === v.id;
                       return (
-                        <div key={v.id} className={`flex items-center rounded-xl border ${active ? "border-[#0a7a5b]" : "border-[#E9EBED]"} overflow-hidden`}>
-                          <div className="p-4 bg-white" style={{ width: 84, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <div
+                          key={v.id}
+                          className={`flex items-center rounded-xl border ${
+                            active ? 'border-[#0a7a5b]' : 'border-[#E9EBED]'
+                          } overflow-hidden`}
+                        >
+                          <div
+                            className="p-4 bg-white"
+                            style={{
+                              width: 84,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}
+                          >
                             <div style={{ width: 48, height: 48 }}>
                               <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
                                 <path d="M4 7h4v10H4z" fill="#F9B61C" />
@@ -312,20 +386,36 @@ export const Delivery: FC = () => {
                           <div className="flex-1 p-4">
                             <div className="text-base font-semibold">{v.title}</div>
                             <div className="text-xs text-gray mt-1">{v.description}</div>
-                            <div className="text-xs text-gray mt-2">Đơn tối thiểu 0 đ • HSD: 24/10/2025</div>
+                            <div className="text-xs text-gray mt-2">
+                              Đơn tối thiểu 0 đ • HSD: 24/10/2025
+                            </div>
                           </div>
                           <div className="p-4 flex items-center">
                             <button
                               onClick={() => setSelectedVoucherId(v.id)}
-                              className={`w-8 h-8 rounded-full flex items-center justify-center ${active ? "bg-[#0a7a5b]" : "bg-gray-200"}`}
+                              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                                active ? 'bg-[#0a7a5b]' : 'bg-gray-200'
+                              }`}
                             >
                               {active ? (
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                                  <path d="M20 6L9 17l-5-5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                  <path
+                                    d="M20 6L9 17l-5-5"
+                                    stroke="#fff"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
                                 </svg>
                               ) : (
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                                  <circle cx="12" cy="12" r="6" stroke="#9CA3AF" strokeWidth="1.5" />
+                                  <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="6"
+                                    stroke="#9CA3AF"
+                                    strokeWidth="1.5"
+                                  />
                                 </svg>
                               )}
                             </button>
@@ -338,12 +428,12 @@ export const Delivery: FC = () => {
                 </div>
               </div>
 
-              <div style={{ borderTop: "1px solid #eee", padding: 12, background: "#fff" }}>
+              <div style={{ borderTop: '1px solid #eee', padding: 12, background: '#fff' }}>
                 <Button
                   fullWidth
                   type="highlight"
                   className="rounded-full h-12 font-semibold text-white"
-                  style={{ background: "#055140" }}
+                  style={{ background: '#055140' }}
                   onClick={() => {
                     const v = availableVouchers.find((x) => x.id === selectedVoucherId) ?? null;
                     applyVoucherLocal(v);

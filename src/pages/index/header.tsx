@@ -10,11 +10,11 @@ export const Welcome: FC = () => {
 
   return (
     <Header
-      className={`app-header bg-[#055140] no-border pl-4 flex-none pb-[3px] transition-all duration-300`}
+      className={`app-header bg-[#0a5132] no-border pl-4 pt-7 px-2.5 text-base text-white flex-none pb-[12px] transition-all duration-300`}
       showBackIcon={false}
       title={
         (
-          <Box flex alignItems="center" className="space-x-2">
+          <Box flex alignItems="center" className="space-x-2 ">
             <img
               className="w-8 h-8 rounded-lg border-inset"
               src={getConfig((c) => c.template.headerLogo) || logo}
@@ -32,7 +32,7 @@ export const Welcome: FC = () => {
         right: 0,
         top: 0,
         zIndex: 100,
-        background: '#055140',
+        background: '#0a5132',
         transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
         opacity: hidden ? 0 : 1,
         pointerEvents: hidden ? 'none' : 'auto',

@@ -20,7 +20,6 @@ export default function OrdersPage() {
     <Page className="bg-white">
       <Header title="Đơn mua" showBackIcon />
 
-      {/* Tabs */}
       <Box className="flex border-b bg-white overflow-x-auto no-scrollbar">
         {TABS.map((t) => {
           const active = tab === t.key;
@@ -35,7 +34,6 @@ export default function OrdersPage() {
         })}
       </Box>
 
-      {/* Content */}
       {orders.length === 0 ? (
         <Box className="flex items-center justify-center h-[80vh]">
           <Text className="text-gray-500">Chưa có đơn hàng</Text>

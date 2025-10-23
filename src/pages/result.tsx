@@ -40,15 +40,12 @@ const CheckoutResultPage: FC = () => {
       Payment.checkTransaction({
         data,
         success: (rs) => {
-          // Kết quả giao dịch khi gọi api thành công
           setPaymentResult(rs);
           if (rs.resultCode === 0) {
-            // Thanh toán đang được xử lý
             timeout = setTimeout(check, 3000);
           }
         },
         fail: (err) => {
-          // Kết quả giao dịch khi gọi api thất bại
           setPaymentResult(err);
         },
       });

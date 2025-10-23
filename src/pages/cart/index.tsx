@@ -1,18 +1,23 @@
-import React, { FC } from "react";
-import { Divider } from "../../components/divider";
-import { Header, Page } from "zmp-ui";
-import { CartItems } from "./cart-items";
-import { CartPreview } from "./preview";
-import { TermsAndPolicies } from "./term-and-policies";
-import { Delivery } from "./delivery";
-import { useVirtualKeyboardVisible } from "../../hooks";
+import React, { FC } from 'react';
+import { Divider } from '../../components/divider';
+import { Header, Page } from 'zmp-ui';
+import { CartItems } from './cart-items';
+import { CartPreview } from './preview';
+import { TermsAndPolicies } from './term-and-policies';
+import { Delivery } from './delivery';
+import { useVirtualKeyboardVisible } from '../../hooks';
 
 const CartPage: FC = () => {
   const keyboardVisible = useVirtualKeyboardVisible();
 
   return (
     <Page className="flex flex-col bg-[#f3f3f6]">
-      <Header title="Giỏ hàng" showBackIcon={false} textColor="white" className="bg-[#055140] shadow-md" />
+      <Header
+        title="Giỏ hàng"
+        showBackIcon={true}
+        textColor="white"
+        className="bg-[#0a5132] shadow-md"
+      />
       <CartItems />
       <Delivery />
       <Divider size={12} />

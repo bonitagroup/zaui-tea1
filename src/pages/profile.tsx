@@ -45,13 +45,19 @@ const ProfilePage: FC = () => {
   };
 
   return (
-    <Page className="bg-gray-50">
-      <Header title="Cá nhân" />
+    <Page className="flex flex-col pb-14 bg-gray-50 relative">
+      <Header
+        title="Cá nhân"
+        textColor="white"
+        backgroundColor="#0a5132"
+        className="pt-8 px-2.5 text-base"
+        style={{ height: 72 }}
+      />
 
       <Box className="p-4 space-y-4">
         <Box className="m-0" onClick={requestUserInfo}>
           <Box
-            className="bg-[#0B5B45] text-white rounded-xl p-4 space-y-2"
+            className="bg-[#0a5132] text-white rounded-xl p-4 space-y-2"
             style={{
               backgroundImage: `url(${subscriptionDecor})`,
               backgroundPosition: 'right 8px center',
@@ -86,7 +92,7 @@ const ProfilePage: FC = () => {
               <img
                 src={purchaseOder}
                 alt="Đơn hàng mới"
-                className="w-8 h-8 mx-auto mb-1 text-[#0B5B45]"
+                className="w-8 h-8 mx-auto mb-1 text-[#0a5132]"
               />
               <Text size="xSmall">Đơn hàng mới</Text>
             </Box>
@@ -94,7 +100,7 @@ const ProfilePage: FC = () => {
               <img
                 src={waitforconfirmation}
                 alt="Chờ xác nhận"
-                className="w-9 h-8 mx-auto mb-1 text-[#0B5B45]"
+                className="w-9 h-8 mx-auto mb-1 text-[#0a5132]"
               />
               <Text size="xSmall">Chờ xác nhận</Text>
             </Box>
@@ -102,7 +108,7 @@ const ProfilePage: FC = () => {
               <img
                 src={delivery}
                 alt="Đang giao hàng"
-                className="w-9 h-8 mx-auto mb-1 text-[#0B5B45]"
+                className="w-9 h-8 mx-auto mb-1 text-[#0a5132]"
               />
               <Text size="xSmall">Đang giao hàng</Text>
             </Box>
@@ -110,7 +116,7 @@ const ProfilePage: FC = () => {
               <img
                 src={starIcon}
                 alt="Chờ xác nhận"
-                className="w-9 h-8 mx-auto mb-1 text-[#0B5B45]"
+                className="w-9 h-8 mx-auto mb-1 text-[#0a5132]"
               />
               <Text size="xSmall">Đánh giá</Text>
             </Box>
@@ -147,7 +153,7 @@ const ProfilePage: FC = () => {
               }
               className="flex-1 rounded-xl py-3 px-3 min-h-[78px] flex items-center justify-center"
               style={{
-                backgroundColor: '#0B5B45',
+                backgroundColor: '#0a5132',
                 boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
                 border: 'none',
               }}
@@ -168,13 +174,13 @@ const ProfilePage: FC = () => {
           </Text.Title>
           <Box className="flex gap-3 text-center">
             <Box className="flex-1 flex flex-col items-center justify-center">
-              <Icon icon="zi-user" className="text-[#055140] text-3xl mb-1" />
+              <Icon icon="zi-user" className="text-[#0a5132] text-3xl mb-1" />
               <Text size="xSmall" className="font-medium text-gray-800">
                 Hội viên thân thiết
               </Text>
             </Box>
             <Box className="flex-1 flex flex-col items-center justify-center">
-              <Icon icon="zi-user" className="text-[#055140] text-3xl mb-1" />
+              <Icon icon="zi-user" className="text-[#0a5132] text-3xl mb-1" />
               <Text size="xSmall" className="font-medium text-gray-800">
                 Giới thiệu khách hàng
               </Text>
@@ -182,21 +188,21 @@ const ProfilePage: FC = () => {
           </Box>
         </Box>
 
-        <Box className="bg-white rounded-xl p-4 shadow-sm space-y-2">
+        <Box className="bg-white rounded-xl p-4 shadow-sm space-y-3">
           <Text.Title size="small">Khác</Text.Title>
           {[
-            'Chính sách bảo mật',
-            'Chính sách vận chuyển',
-            'Chính sách thanh toán',
-            'Chính sách hoàn trả',
-            'Chính sách bán hàng',
-            'Liên hệ và hỗ trợ qua Zalo OA',
+            `Chính sách bảo mật`,
+            `Chính sách vận chuyển`,
+            `Chính sách thanh toán`,
+            `Chính sách hoàn trả`,
+            `Chính sách bán hàng`,
+            `Liên hệ và hỗ trợ qua Zalo OA`,
           ].map((text, i) => {
             const isZaloContact = text.includes('Zalo OA');
             return (
               <Box
                 key={i}
-                className="flex items-center justify-between py-1 border-b border-gray-100 last:border-none"
+                className="flex items-center justify-between pb-5 py-2 border-zinc-200 border-b last:border-none"
                 onClick={() => {
                   if (isZaloContact) {
                     handleOpenZalo('Xin chào, tôi cần hỗ trợ từ Zalo OA');
@@ -204,32 +210,16 @@ const ProfilePage: FC = () => {
                     console.log('clicked', text);
                   }
                 }}
-                style={{ cursor: 'pointer' }}
               >
-                <Text size="xSmall">{text}</Text>
+                <Box className="flex items-center">
+                  <Icon icon="zi-link" className="text-xl mr-2" />
+                  <Text size="xSmall">{text}</Text>
+                </Box>
                 <Icon icon="zi-chevron-right" />
               </Box>
             );
           })}
         </Box>
-      </Box>
-
-      <Box className="fixed bottom-0 left-0 right-0 bg-white border-t p-2 flex justify-around">
-        <Button size="small" onClick={() => navigate('/')}>
-          Trang chủ
-        </Button>
-        <Button size="small" onClick={() => navigate('/points')}>
-          Tích điểm
-        </Button>
-        <Button size="small" onClick={() => navigate('/add')}>
-          +
-        </Button>
-        <Button size="small" onClick={() => navigate('/cart')}>
-          Giỏ hàng
-        </Button>
-        <Button size="small" type="highlight" onClick={() => navigate('/profile')}>
-          Tài khoản
-        </Button>
       </Box>
     </Page>
   );
