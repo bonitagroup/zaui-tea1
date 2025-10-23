@@ -5,6 +5,7 @@ import { Box, Icon, Text } from 'zmp-ui';
 import { useNavigate } from 'react-router-dom';
 import { ProductPicker } from './picker';
 import { calcFinalPrice } from '../../utils/product';
+import lightning from '../../static/page/lightning.png';
 
 const images = import.meta.glob('../../../src/static/page/product-list/*.{png,jpg,jpeg,svg,webp}', {
   eager: true,
@@ -17,12 +18,24 @@ const getImage = (filename: string): string => {
   return images[key].default;
 };
 
+function getDiscountPercent(product: Product) {
+  if (!product.sale) return null;
+  if (product.sale.type === 'fixed') {
+    const percent = Math.round((product.sale.amount / product.price) * 100);
+    return percent > 0 ? percent : null;
+  }
+  if (product.sale.type === 'percent') {
+    return Math.round(product.sale.percent * 100);
+  }
+  return null;
+}
+
 export const ProductItem: FC<{ product: Product }> = ({ product }) => {
   const imageSrc = getImage(product.image);
   const navigate = useNavigate();
 
-  // tinh gia co nhieu lua chon
   let priceDisplay: React.ReactNode;
+  let originalPriceDisplay: React.ReactNode = null;
   if (product.variants && product.variants.length > 0 && product.variants[0].options?.length > 1) {
     const variantId = product.variants[0].id;
     const prices = product.variants[0].options.map((option) =>
@@ -39,10 +52,62 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
     );
   } else {
     priceDisplay = <FinalPrice>{product}</FinalPrice>;
+    if (product.sale) {
+      originalPriceDisplay = (
+        <span className="line-through text-gray-400 ml-2 text-base">
+          {product.price.toLocaleString()} đ
+        </span>
+      );
+    }
   }
 
+  const discountPercent = getDiscountPercent(product);
+
   return (
-    <div className="flex flex-col justify-between h-full bg-white rounded-b-lg rounded-t-none shadow-2xl overflow-hidden">
+    <div className="relative flex flex-col justify-between h-full bg-white rounded-b-lg rounded-t-none shadow-2xl overflow-hidden">
+      {product.sale && (
+        <div className="absolute top-0 left-0 z-10">
+          <div className="flex items-center">
+            {/* SVG banner "Khuyến mãi" mới */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="48" viewBox="0 0 180 48">
+              <title>Nhãn khuyến mãi</title>
+              <rect x="0" y="0" width="180" height="48" rx="10" ry="10" fill="#e53935" />
+              <rect
+                x="48"
+                y="8"
+                width="126"
+                height="32"
+                rx="8"
+                ry="8"
+                fill="#ffffff"
+                stroke="#d32f2f"
+                strokeWidth="2"
+              />
+              <rect x="8" y="8" width="36" height="32" rx="6" ry="6" fill="#d32f2f" />
+              <path
+                d="m23.89,12.25l-8.54,14l9.82,0l-5.13,10.25l17.71,-15.75l-9.13,-0.25l5.28,-8.25l-10.01,0z"
+                fill="#ffffff"
+              />
+              <text
+                x="58.25"
+                y="30.56"
+                fontFamily="Arial, Helvetica, sans-serif"
+                fontSize="18.76"
+                fontWeight="700"
+                fill="#d32f2f"
+              >
+                Khuyến mãi
+              </text>
+            </svg>
+            {discountPercent && (
+              <div className="bg-[#d32f2f] text-white px-1 py-1 rounded-full ml-4 font-semibold text-xs">
+                -{discountPercent}%
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       <div className="cursor-pointer" onClick={() => navigate(`/product/${product.id}`)}>
         <Box className="w-full aspect-[4/5] bg-white rounded-lg overflow-hidden relative">
           <img
@@ -52,15 +117,16 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
             className="absolute inset-0 w-full h-full object-contain bg-white"
           />
         </Box>
-
         <Text className="font-medium text-left pl-1 text-base mt-2">{product.name}</Text>
       </div>
 
       <div className="mt-auto">
-        <Text size="xxSmall" className="font-semibold text-base text-left pl-2 text-red-600 pb-0">
-          {priceDisplay}
-        </Text>
-
+        <div className="flex items-end pl-2">
+          <Text size="xxSmall" className="font-semibold text-base text-red-600 pb-0">
+            {priceDisplay}
+          </Text>
+          {originalPriceDisplay}
+        </div>
         <ProductPicker product={product}>
           {({ open }) => (
             <button
@@ -71,7 +137,7 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
               }}
             >
               <div className="flex w-full justify-between items-end">
-                <span className="font-normal text-sm">Quy cách đóng gói</span>
+                <span className="font-normal text-sm text-[#0a5132]">Quy cách đóng gói</span>
                 <Icon icon="zi-plus-circle" className="text-xl items-center" />
               </div>
             </button>
