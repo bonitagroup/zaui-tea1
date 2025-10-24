@@ -1,10 +1,11 @@
 import { createOrder } from 'zmp-sdk';
-import { Option, Product } from '../types/product';
+import { Option, Product, SingleOptionVariant } from '../types/product';
 import { getConfig } from './config';
-import { CartItem } from '../types/cart';
+import { CartItem, SelectedOptions } from '../types/cart';
 
-export function calcFinalPrice(product: Product, options?: CartItem) {
+export function calcFinalPrice(product: Product, options?: SelectedOptions): number {
   let finalPrice = product.price;
+
   if (product.sale) {
     if (product.sale.type === 'fixed') {
       finalPrice = product.price - product.sale.amount;
@@ -14,33 +15,21 @@ export function calcFinalPrice(product: Product, options?: CartItem) {
   }
 
   if (options && product.variants) {
-    const selectedOptions: Option[] = [];
-    for (const variantKey in options) {
-      const variant = product.variants.find((v) => v.id === variantKey);
-      if (variant) {
-        const currentOption = options[variantKey];
-        if (typeof currentOption === 'string') {
-          const selected = variant.options.find((o) => o.id === currentOption);
-          if (selected) {
-            selectedOptions.push(selected);
+    product.variants.forEach((variant: SingleOptionVariant) => {
+      const selectedOptionId = options[variant.id];
+      if (selectedOptionId) {
+        const option = variant.options.find((opt) => opt.id === selectedOptionId);
+        if (option?.priceChange) {
+          if (option.priceChange.type === 'fixed') {
+            finalPrice += option.priceChange.amount;
+          } else {
+            finalPrice += product.price * option.priceChange.percent;
           }
-        } else {
-          const selecteds = variant.options.filter((o) => currentOption.includes(o.id));
-          selectedOptions.push(...selecteds);
         }
       }
-    }
-    finalPrice = selectedOptions.reduce((price, option) => {
-      if (option.priceChange) {
-        if (option.priceChange.type == 'fixed') {
-          return price + option.priceChange.amount;
-        } else {
-          return price + product.price * option.priceChange.percent;
-        }
-      }
-      return price;
-    }, finalPrice);
+    });
   }
+
   return finalPrice;
 }
 

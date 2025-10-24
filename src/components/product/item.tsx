@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { ProductPicker } from './picker';
 import { calcFinalPrice } from '../../utils/product';
 import lightning from '../../static/page/lightning.png';
+import { SelectedOptions } from '../../types/cart';
 
 const images = import.meta.glob('../../../src/static/page/product-list/*.{png,jpg,jpeg,svg,webp}', {
   eager: true,
@@ -36,20 +37,29 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
 
   let priceDisplay: React.ReactNode;
   let originalPriceDisplay: React.ReactNode = null;
-  if (product.variants && product.variants.length > 0 && product.variants[0].options?.length > 1) {
-    const variantId = product.variants[0].id;
-    const prices = product.variants[0].options.map((option) =>
-      calcFinalPrice(product, { [variantId]: option.id } as any)
-    );
-    const minPrice = Math.min(...prices);
-    const maxPrice = Math.max(...prices);
-    priceDisplay = (
-      <span>
-        <span>{minPrice.toLocaleString()} đ</span>
-        {' - '}
-        <span>{maxPrice.toLocaleString()} đ</span>
-      </span>
-    );
+  if (product.variants && product.variants.length > 0) {
+    const variant = product.variants[0];
+    if (variant.options && variant.options.length > 1) {
+      const variantOptions: SelectedOptions = {};
+      const prices = variant.options.map((option) => {
+        if (variant.id) {
+          variantOptions[variant.id] = option.id;
+          return calcFinalPrice(product, variantOptions);
+        }
+        return product.price;
+      });
+
+      const minPrice = Math.min(...prices);
+      const maxPrice = Math.max(...prices);
+
+      priceDisplay = (
+        <span>
+          <span>{minPrice.toLocaleString()} đ</span>
+          {' - '}
+          <span>{maxPrice.toLocaleString()} đ</span>
+        </span>
+      );
+    }
   } else {
     priceDisplay = <FinalPrice>{product}</FinalPrice>;
     if (product.sale) {
@@ -68,7 +78,6 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
       {product.sale && (
         <div className="absolute top-0 left-0 z-10">
           <div className="flex items-center">
-            {/* SVG banner "Khuyến mãi" mới */}
             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="48" viewBox="0 0 180 48">
               <title>Nhãn khuyến mãi</title>
               <rect x="0" y="0" width="180" height="48" rx="10" ry="10" fill="#e53935" />
@@ -100,7 +109,7 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
               </text>
             </svg>
             {discountPercent && (
-              <div className="bg-[#d32f2f] text-white px-1 py-1 rounded-full ml-4 font-semibold text-xs">
+              <div className="bg-[#d32f2f] text-white px-1 py-1 rounded-full ml-3 font-semibold text-xs">
                 -{discountPercent}%
               </div>
             )}

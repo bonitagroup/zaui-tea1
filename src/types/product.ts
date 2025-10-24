@@ -40,8 +40,8 @@ export interface Product {
   price: number;
   image: string;
   description?: string;
-  sale?: any;
-  categoryId: string[];
+  sale?: Sale;
   variantId: string[];
-  [key: string]: any;
+  variants?: Variant[];
+  categoryId: string[];
 }

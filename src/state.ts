@@ -11,12 +11,47 @@ import { calcFinalPrice } from './utils/product';
 import { wait } from './utils/async';
 import categories from '../mock/categories.json';
 import { Order } from './types/order';
+import { UserInfo } from './types/user';
 
-export const userState = selector({
+export const userState = selector<UserInfo>({
   key: 'user',
   get: async () => {
-    const { userInfo } = await getUserInfo({ autoRequestPermission: true });
-    return userInfo;
+    try {
+      const { userInfo } = await getUserInfo({
+        autoRequestPermission: true,
+        avatarType: 'normal',
+      });
+
+      if (!userInfo) {
+        return {
+          name: 'Quý khách hàng',
+          avatar: '',
+          id: '',
+          idByOA: '',
+          followedOA: false,
+          isSensitive: false,
+        };
+      }
+
+      return {
+        name: userInfo.name,
+        avatar: userInfo.avatar,
+        id: userInfo.id || '',
+        idByOA: userInfo.idByOA || '',
+        followedOA: userInfo.followedOA || false,
+        isSensitive: userInfo.isSensitive || false,
+      };
+    } catch (err) {
+      console.error('Error getting user info:', err);
+      return {
+        name: 'Quý khách hàng',
+        avatar: '',
+        id: '',
+        idByOA: '',
+        followedOA: false,
+        isSensitive: false,
+      };
+    }
   },
 });
 
@@ -31,13 +66,17 @@ export const productsState = selector<Product[]>({
     await wait(2000);
     const products = (await import('../mock/products.json')).default;
     const variants = (await import('../mock/variants.json')).default as Variant[];
-    return products.map(
-      (product) =>
-        ({
-          ...product,
-          variants: variants.filter((variant) => product.variantId.includes(variant.id)),
-        } as Product)
-    );
+
+    return products.map((product) => {
+      const validVariantIds = Array.isArray(product.variantId) ? product.variantId : [];
+
+      return {
+        ...product,
+        variants: variants.filter((variant): variant is Variant => {
+          return typeof variant?.id === 'string' && validVariantIds.includes(variant.id);
+        }),
+      };
+    }) as Product[];
   },
 });
 
