@@ -3,7 +3,7 @@ import { Sheet } from '../../components/fullscreen-sheet';
 import React, { FC, ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useSetRecoilState } from 'recoil';
-import { cartState } from '../../state';
+import { cartState } from '../../state/state';
 import { CartItem } from '../../types/cart';
 import { Product, Variant, MultipleOptionVariant } from '../../types/product';
 import { isIdentical } from '../../utils/product';

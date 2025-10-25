@@ -1,11 +1,11 @@
 import React, { FC, Suspense } from 'react';
 import { Section } from '../../components/section';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { productsState } from '../../state';
+import { productsState } from '../../state/state';
 import { Box, Icon, Text } from 'zmp-ui';
 import { ProductItem } from '../../components/product/item';
 import { ProductItemSkeleton } from '../../components/skeletons';
-import { categoriesState, selectedCategoryIdState } from '../../state';
+import { categoriesState, selectedCategoryIdState } from '../../state/state';
 import { useNavigate } from 'react-router';
 
 export const ProductListContent: FC = () => {

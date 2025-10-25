@@ -1,11 +1,7 @@
-import { ListItem } from "../../components/list-item";
-import React, { FC } from "react";
-import {
-  useRecoilValueLoadable,
-  useRecoilValue,
-  useSetRecoilState,
-} from "recoil";
-import { phoneState, requestPhoneTriesState, userState } from "../../state";
+import { ListItem } from '../../components/list-item';
+import React, { FC } from 'react';
+import { useRecoilValueLoadable, useRecoilValue, useSetRecoilState } from 'recoil';
+import { phoneState, requestPhoneTriesState, userState } from '../../state/state';
 
 export const PersonPicker: FC = () => {
   const user = useRecoilValueLoadable(userState);
@@ -14,13 +10,12 @@ export const PersonPicker: FC = () => {
   return (
     <ListItem
       title={
-        user.state === "hasValue" && user.contents?.name
+        user.state === 'hasValue' && user.contents?.name
           ? `${user.contents.name} - ${phone}`
-          : phone || "Chọn người nhận"
+          : phone || 'Chọn người nhận'
       }
       subtitle="Người nhận"
-      onClick={() => {
-      }}
+      onClick={() => {}}
     />
   );
 };
@@ -29,7 +24,7 @@ export const RequestPersonPickerPhone: FC = () => {
   const retry = useSetRecoilState(requestPhoneTriesState);
   const phone = useRecoilValueLoadable(phoneState);
 
-  if (phone.state === "hasValue" && phone.contents) {
+  if (phone.state === 'hasValue' && phone.contents) {
     return <PersonPicker />;
   }
 

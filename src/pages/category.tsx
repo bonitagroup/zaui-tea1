@@ -1,7 +1,7 @@
 import { ProductItem } from '../components/product/item';
 import React, { FC, Suspense, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { categoriesState, productsByCategoryState } from '../state';
+import { categoriesState, productsByCategoryState } from '../state/state';
 import { Box, Header, Icon, Page, Text } from 'zmp-ui';
 import { useNavigate } from 'react-router';
 

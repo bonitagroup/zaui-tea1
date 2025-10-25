@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Box, Icon, Text } from 'zmp-ui';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { categoriesState, selectedCategoryIdState } from '../../state';
+import { categoriesState, selectedCategoryIdState } from '../../state/state';
 import { useNavigate } from 'react-router';
 
 const images = import.meta.glob('../../static/page/*.svg', { eager: true }) as Record<

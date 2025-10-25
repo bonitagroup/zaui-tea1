@@ -1,21 +1,20 @@
-import { FinalPrice } from "../../components/display/final-price";
-import { DisplayPrice } from "../../components/display/price";
-import { ProductPicker } from "../../components/product/picker";
-import React, { FC } from "react";
-import { useRecoilValue } from "recoil";
-import { recommendProductsState } from "../../state";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Box, Text, Icon } from "zmp-ui";
+import { FinalPrice } from '../../components/display/final-price';
+import { DisplayPrice } from '../../components/display/price';
+import { ProductPicker } from '../../components/product/picker';
+import React, { FC } from 'react';
+import { useRecoilValue } from 'recoil';
+import { recommendProductsState } from '../../state/state';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Box, Text, Icon } from 'zmp-ui';
 
-const images = import.meta.glob(
-  "../../static/page/product-list/*.{png,jpg,jpeg,svg,webp}",
-  { eager: true }
-) as Record<string, { default: string }>;
+const images = import.meta.glob('../../static/page/product-list/*.{png,jpg,jpeg,svg,webp}', {
+  eager: true,
+}) as Record<string, { default: string }>;
 
 const getImage = (filename: string): string => {
-  if (!filename) return "/fallback.svg";
+  if (!filename) return '/fallback.svg';
   const key = Object.keys(images).find((k) => k.includes(filename));
-  return key ? images[key].default : "/fallback.svg";
+  return key ? images[key].default : '/fallback.svg';
 };
 
 export const RecommendContent: FC = () => {
@@ -28,9 +27,7 @@ export const RecommendContent: FC = () => {
           <Icon icon="zi-info-circle-solid" className="text-[#0a5132] text-5xl" />
         </Box>
         <Box className="flex-1 ml-2.5 ">
-          <Text className="text-[#0a5132] font-semibold text-lg">
-            Gợi ý cho bạn
-          </Text>
+          <Text className="text-[#0a5132] font-semibold text-lg">Gợi ý cho bạn</Text>
           <Text size="xxSmall" className="text-[#0a5132] block">
             Sản phẩm đặc biệt của chúng tôi
           </Text>
@@ -65,10 +62,7 @@ export const RecommendContent: FC = () => {
                           <Text size="xxSmall" className="line-through text-gray">
                             <DisplayPrice>{product.price}</DisplayPrice>
                           </Text>
-                          <Text
-                            size="large"
-                            className="font-semibold text-red-600 block mt-1"
-                          >
+                          <Text size="large" className="font-semibold text-red-600 block mt-1">
                             <FinalPrice>{product}</FinalPrice>
                           </Text>
                         </div>

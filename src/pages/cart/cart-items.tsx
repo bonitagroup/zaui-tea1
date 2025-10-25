@@ -4,7 +4,7 @@ import { ListRenderer } from '../../components/list-renderer';
 import { ProductPicker } from '../../components/product/picker';
 import React, { FC, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { cartState } from '../../state';
+import { cartState } from '../../state/state';
 import { CartItem } from '../../types/cart';
 import { Box, Text } from 'zmp-ui';
 import { FaBoxOpen } from 'react-icons/fa';

@@ -1,20 +1,16 @@
-import { ActionSheet } from "../../components/fullscreen-sheet";
-import { ListItem } from "../../components/list-item";
-import React, { FC, useState } from "react";
-import { createPortal } from "react-dom";
-import {
-  useRecoilValueLoadable,
-  useSetRecoilState,
-  useRecoilValue,
-} from "recoil";
+import { ActionSheet } from '../../components/fullscreen-sheet';
+import { ListItem } from '../../components/list-item';
+import React, { FC, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { useRecoilValueLoadable, useSetRecoilState, useRecoilValue } from 'recoil';
 import {
   nearbyStoresState,
   requestLocationTriesState,
   selectedStoreIndexState,
   selectedStoreState,
-} from "../../state";
-import { Store } from "../../types/delivery";
-import { displayDistance } from "../../utils/location";
+} from '../../state/state';
+import { Store } from '../../types/delivery';
+import { displayDistance } from '../../utils/location';
 
 export const StorePicker: FC = () => {
   const [visible, setVisible] = useState(false);
@@ -33,26 +29,24 @@ export const StorePicker: FC = () => {
         title={selectedStore.name}
         subtitle={selectedStore.address}
       />
-      {nearbyStores.state === "hasValue" &&
+      {nearbyStores.state === 'hasValue' &&
         createPortal(
           <ActionSheet
             title="Các cửa hàng ở gần bạn"
             visible={visible}
             onClose={() => setVisible(false)}
             actions={[
-              nearbyStores.contents.map(
-                (store: Store & { distance?: number }, i) => ({
-                  text: store.distance
-                    ? `${store.name} - ${displayDistance(store.distance)}`
-                    : store.name,
-                  highLight: store.id === selectedStore?.id,
-                  onClick: () => {
-                    setSelectedStoreIndex(i);
-                    setVisible(false);
-                  },
-                })
-              ),
-              [{ text: "Đóng", close: true, danger: true }],
+              nearbyStores.contents.map((store: Store & { distance?: number }, i) => ({
+                text: store.distance
+                  ? `${store.name} - ${displayDistance(store.distance)}`
+                  : store.name,
+                highLight: store.id === selectedStore?.id,
+                onClick: () => {
+                  setSelectedStoreIndex(i);
+                  setVisible(false);
+                },
+              })),
+              [{ text: 'Đóng', close: true, danger: true }],
             ]}
           />,
           document.body

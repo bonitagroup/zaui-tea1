@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Text } from 'zmp-ui';
-import { productsState } from '../../state';
+import { productsState } from '../../state/state';
 import { useRecoilValue } from 'recoil';
 import { ProductItem } from '../../components/product/item';
 

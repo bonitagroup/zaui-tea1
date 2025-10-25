@@ -1,10 +1,10 @@
-import { FinalPrice } from "../../components/display/final-price";
-import { ProductPicker } from "../../components/product/picker";
-import { ProductSearchResultSkeleton } from "../../components/skeletons";
-import React, { FC, Suspense } from "react";
-import { useRecoilValue } from "recoil";
-import { resultState } from "../../state";
-import { Box, Text } from "zmp-ui";
+import { FinalPrice } from '../../components/display/final-price';
+import { ProductPicker } from '../../components/product/picker';
+import { ProductSearchResultSkeleton } from '../../components/skeletons';
+import React, { FC, Suspense } from 'react';
+import { useRecoilValue } from 'recoil';
+import { resultState } from '../../state/state';
+import { Box, Text } from 'zmp-ui';
 
 const SearchResultContent: FC = () => {
   const result = useRecoilValue(resultState);
@@ -19,10 +19,7 @@ const SearchResultContent: FC = () => {
             <ProductPicker key={product.id} product={product}>
               {({ open }) => (
                 <div onClick={open} className="flex items-center space-x-4">
-                  <img
-                    className="w-[88px] h-[88px] rounded-lg"
-                    src={product.image}
-                  />
+                  <img className="w-[88px] h-[88px] rounded-lg" src={product.image} />
                   <Box className="space-y-2">
                     <Text>{product.name}</Text>
                     <Text size="xSmall" className="text-gray">

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Page, Header, Box, Text } from 'zmp-ui';
 import { useRecoilValue } from 'recoil';
-import { ordersState } from '../../state';
+import { ordersState } from '../../state/state';
 
 const TABS = [
   { key: 'pending', label: 'Chờ xác nhận' },

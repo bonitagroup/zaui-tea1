@@ -1,17 +1,17 @@
 import { atom, selector, selectorFamily } from 'recoil';
 import { getLocation, getPhoneNumber, getUserInfo } from 'zmp-sdk';
-import logo from './static/logo.png';
-import { Category } from './types/category';
-import { Product, Variant } from './types/product';
-import { Cart } from './types/cart';
-import { EndowListAtom } from './types/endow';
-import { calculateDistance } from './utils/location';
-import { Store } from './types/delivery';
-import { calcFinalPrice } from './utils/product';
-import { wait } from './utils/async';
-import categories from '../mock/categories.json';
-import { Order } from './types/order';
-import { UserInfo } from './types/user';
+import logo from '../static/logo.png';
+import { Category } from '../types/category';
+import { Product, Variant } from '../types/product';
+import { Cart } from '../types/cart';
+import { EndowListAtom } from '../types/endow';
+import { calculateDistance } from '../utils/location';
+import { Store } from '../types/delivery';
+import { calcFinalPrice } from '../utils/product';
+import { wait } from '../utils/async';
+import categories from '../../mock/categories.json';
+import { Order } from '../types/order';
+import { UserInfo } from '../types/user';
 
 export const userState = selector<UserInfo>({
   key: 'user',
@@ -64,8 +64,8 @@ export const productsState = selector<Product[]>({
   key: 'products',
   get: async () => {
     await wait(2000);
-    const products = (await import('../mock/products.json')).default;
-    const variants = (await import('../mock/variants.json')).default as Variant[];
+    const products = (await import('../../mock/products.json')).default;
+    const variants = (await import('../../mock/variants.json')).default as Variant[];
 
     return products.map((product) => {
       const validVariantIds = Array.isArray(product.variantId) ? product.variantId : [];

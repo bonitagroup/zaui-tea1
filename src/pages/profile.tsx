@@ -3,7 +3,7 @@ import { Box, Header, Icon, Page, Text, Button } from 'zmp-ui';
 import subscriptionDecor from '../static/subscription-decor.svg';
 import { useNavigate } from 'react-router';
 import { useRecoilCallback } from 'recoil';
-import { userState } from '../state';
+import { userState } from '../state/state';
 import zaloicon from '@/static/page/zaloIcon.png';
 import { openChat } from 'zmp-sdk/apis';
 import purchaseOder from '@/static/iconsvg/profile-purchaseOrder-New.png';

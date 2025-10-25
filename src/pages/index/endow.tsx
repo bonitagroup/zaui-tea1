@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { endowListState } from '../../state';
+import { endowListState } from '../../state/state';
 import { Box, Text } from 'zmp-ui';
 
 const GiftIcon: React.FC = () => (

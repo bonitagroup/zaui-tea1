@@ -1,7 +1,7 @@
 import { DisplayPrice } from '../../components/display/price';
 import React, { FC } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { totalPriceState, totalQuantityState, cartState, ordersState } from '../../state';
+import { totalPriceState, totalQuantityState, cartState, ordersState } from '../../state/state';
 import pay from '../../utils/product';
 import { Box, Button, Text } from 'zmp-ui';
 

@@ -10,7 +10,7 @@ import ProfilePage from '../pages/profile';
 import SearchPage from '../pages/search';
 import CheckoutResultPage from '../pages/result';
 import ProductDetailPage from '../pages/product-detail';
-import PointsPage from '../pages/points';
+import PointsPage from '../pages/membership';
 import TasksPage from '../pages/tasks';
 import ReferralPage from '../pages/introduce/index';
 import GamePage from '../pages/game';

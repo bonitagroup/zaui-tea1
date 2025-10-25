@@ -1,9 +1,9 @@
-import React, { useCallback } from "react";
-import { FC } from "react";
-import { useRecoilState } from "recoil";
-import { keywordState } from "../../state";
-import { Box, Input } from "zmp-ui";
-import { debounce } from "lodash";
+import React, { useCallback } from 'react';
+import { FC } from 'react';
+import { useRecoilState } from 'recoil';
+import { keywordState } from '../../state/state';
+import { Box, Input } from 'zmp-ui';
+import { debounce } from 'lodash';
 
 export const Inquiry: FC = () => {
   const [keyword, setKeyword] = useRecoilState(keywordState);
@@ -12,7 +12,7 @@ export const Inquiry: FC = () => {
     debounce((keyword: string) => {
       setKeyword(keyword);
     }, 500),
-    [],
+    []
   );
 
   return (
@@ -24,7 +24,7 @@ export const Inquiry: FC = () => {
         ((el: HTMLDivElement) => {
           setTimeout(() => {
             if (el) {
-              el.style.paddingTop = "8px";
+              el.style.paddingTop = '8px';
             }
           });
         }) as any

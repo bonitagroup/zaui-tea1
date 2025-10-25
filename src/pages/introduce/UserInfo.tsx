@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Text } from 'zmp-ui';
 import { useRecoilValueLoadable } from 'recoil';
-import { userState } from '../../state';
+import { userState } from '../../state/state';
 import { UserInfo as UserInfoType } from '../../types/user';
 
 const UserInfo = () => {

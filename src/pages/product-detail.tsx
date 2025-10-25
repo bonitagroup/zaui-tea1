@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { categoriesState, productsState, selectedCategoryIdState } from '../state';
+import { categoriesState, productsState, selectedCategoryIdState } from '../state/state';
 import { Box, Page, Header, Text, Button, Icon, useNavigate } from 'zmp-ui';
 import { ProductPicker } from '../components/product/picker';
 import { FinalPrice } from '../components/display/final-price';

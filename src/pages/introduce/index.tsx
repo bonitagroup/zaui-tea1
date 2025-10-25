@@ -8,7 +8,7 @@ import TrendingProducts from './TrendingProducts';
 const IntroducePage = () => {
   return (
     <Page className="bg-gray-100 min-h-screen">
-      <Header title="Giới thiệu khách hàng" />
+      <Header title="Giới thiệu khách hàng" backgroundColor="#064E3B" textColor="white" />
       <UserInfo />
       <Statistics />
       <Tools />

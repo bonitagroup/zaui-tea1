@@ -2,7 +2,7 @@ import { ListRenderer } from '../../components/list-renderer';
 import React, { FC, useState } from 'react';
 import { Box, Icon, Input, Text, Button, Switch } from 'zmp-ui';
 import { useRecoilValue } from 'recoil';
-import { totalPriceState } from '../../state';
+import { totalPriceState } from '../../state/state';
 import { useNavigate } from 'react-router';
 import locations from '../../../mock/vietnam_locations.json';
 import { SavedAddress } from '../../types/adress';
